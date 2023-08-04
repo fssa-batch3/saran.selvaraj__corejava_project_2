@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: TestDeleteFeature.TestDelete
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 1.085 s <<< FAILURE! - in TestDeleteFeature.TestDelete
+TestDeleteSuccess  Time elapsed: 1.034 s  <<< ERROR!
+com.google.protobuf.ServiceException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at TestDeleteFeature.TestDelete.TestDeleteSuccess(TestDelete.java:35)
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at TestDeleteFeature.TestDelete.TestDeleteSuccess(TestDelete.java:35)
+
+TestDeleteFail  Time elapsed: 0.03 s  <<< ERROR!
+com.google.protobuf.ServiceException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at TestDeleteFeature.TestDelete.TestDeleteFail(TestDelete.java:43)
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at TestDeleteFeature.TestDelete.TestDeleteFail(TestDelete.java:43)
+
