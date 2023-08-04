@@ -1,16 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestLoginFeature.TestLogin
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.066 s <<< FAILURE! - in TestLoginFeature.TestLogin
-TestInValidUser  Time elapsed: 0.015 s  <<< ERROR!
-com.google.protobuf.ServiceException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-	at TestLoginFeature.TestLogin.TestInValidUser(TestLogin.java:35)
-Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-	at TestLoginFeature.TestLogin.TestInValidUser(TestLogin.java:35)
-
-TestValidUser  Time elapsed: 0.051 s  <<< ERROR!
-com.google.protobuf.ServiceException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-	at TestLoginFeature.TestLogin.TestValidUser(TestLogin.java:29)
-Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.115 s <<< FAILURE! - in TestLoginFeature.TestLogin
+TestValidUser  Time elapsed: 0.039 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at TestLoginFeature.TestLogin.TestValidUser(TestLogin.java:29)
 
