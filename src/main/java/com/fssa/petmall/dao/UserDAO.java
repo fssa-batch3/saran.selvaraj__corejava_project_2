@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 import com.fssa.petmall.model.User;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class UserDAO {
 
 	
@@ -17,6 +19,8 @@ public class UserDAO {
 		String DB_USER;
 		String DB_PASSWORD;
 
+		
+		
 		if (System.getenv("CI") != null) {
 			DB_URL = System.getenv("DB_URL");
 			DB_USER = System.getenv("DB_USER");
