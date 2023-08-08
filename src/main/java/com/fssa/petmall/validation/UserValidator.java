@@ -1,12 +1,11 @@
-package petMall.validation;
+package com.fssa.petmall.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import petMall.model.User;
-import petMall.validation.exception.InvalidUserException;
-
 import java.util.regex.PatternSyntaxException;
+
+import com.fssa.petmall.model.User;
+import com.fssa.petmall.validation.exception.InvalidUserException;
 
 public class UserValidator {
 	

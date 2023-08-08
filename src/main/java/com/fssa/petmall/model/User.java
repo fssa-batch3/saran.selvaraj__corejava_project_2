@@ -1,4 +1,4 @@
-package petMall.model;
+package com.fssa.petmall.model;
 
 public class User {
 

@@ -1,4 +1,4 @@
-package petMall.dao.exception;
+package com.fssa.petmall.dao.exception;
 
 public class DAOException extends Exception {
 	

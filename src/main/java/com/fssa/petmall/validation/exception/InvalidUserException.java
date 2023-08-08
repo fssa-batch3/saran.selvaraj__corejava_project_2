@@ -1,4 +1,4 @@
-	package petMall.validation.exception;
+	package com.fssa.petmall.validation.exception;
 	
 	public class InvalidUserException extends Exception {
 		/**

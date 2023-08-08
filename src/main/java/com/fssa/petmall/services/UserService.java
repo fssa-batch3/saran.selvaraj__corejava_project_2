@@ -1,12 +1,11 @@
-package petMall.services;
+package com.fssa.petmall.services;
 import java.sql.SQLException;
 
+import com.fssa.petmall.dao.UserDAO;
+import com.fssa.petmall.model.User;
+import com.fssa.petmall.validation.UserValidator;
+import com.fssa.petmall.validation.exception.InvalidUserException;
 import com.google.protobuf.ServiceException;
-
-import petMall.dao.UserDAO;
-import petMall.model.User;
-import petMall.validation.UserValidator;
-import petMall.validation.exception.InvalidUserException;
 
 public class UserService {
 

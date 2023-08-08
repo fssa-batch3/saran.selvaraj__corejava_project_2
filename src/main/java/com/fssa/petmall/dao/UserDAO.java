@@ -1,4 +1,4 @@
-package petMall.dao;
+package com.fssa.petmall.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import petMall.model.User;
+import com.fssa.petmall.model.User;
 
 public class UserDAO {
 

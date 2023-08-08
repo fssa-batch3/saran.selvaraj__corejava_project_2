@@ -1,4 +1,4 @@
-package petMall.services.exception;
+package com.fssa.petmall.services.exception;
 
 public class serviceException extends Exception {
 	

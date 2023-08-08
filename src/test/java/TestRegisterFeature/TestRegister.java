@@ -4,11 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import com.fssa.petmall.model.User;
+import com.fssa.petmall.services.UserService;
+import com.fssa.petmall.services.exception.serviceException;
 import com.google.protobuf.ServiceException;
-	
-import petMall.model.User;
-import petMall.services.UserService;
-import petMall.services.exception.serviceException;
 
 public class TestRegister {
 

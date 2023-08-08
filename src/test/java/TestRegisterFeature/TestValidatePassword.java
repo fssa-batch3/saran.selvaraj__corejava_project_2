@@ -5,10 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.fssa.petmall.model.User;
+import com.fssa.petmall.services.UserService;
 import com.google.protobuf.ServiceException;
-
-import petMall.services.UserService;
-import petMall.model.User;
 
 public class TestValidatePassword {
 

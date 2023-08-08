@@ -1,11 +1,11 @@
-package petMall;
+package com.fssa.petmall;
 
 //import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import petMall.model.*;
+import com.fssa.petmall.model.*;
 
 public class App {
 	
