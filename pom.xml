@@ -6,6 +6,12 @@
 	<artifactId>petmall</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>petmall</name>
+	<properties>
+		
+		<sonar.organization>fssa-batch3</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectKey>fssa-batch3_saran_selvaraj_corejava_project_2</sonar.projectKey> 
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.fssa.corejava</groupId>
@@ -34,6 +40,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.33</version>
 		</dependency>
+		
+        <!-- <https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv> -->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>java-dotenv</artifactId>
+            <version>5.2.2</version>
+        </dependency>
 
 	</dependencies>
 

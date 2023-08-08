@@ -13,7 +13,21 @@ public class UserDAO {
 	
 	 //connect to database
 	public Connection getConnection() throws SQLException {
-	 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pet_mall", "root","123456");
+		String DB_URL;
+		String DB_USER;
+		String DB_PASSWORD;
+
+		if (System.getenv("CI") != null) {
+			DB_URL = System.getenv("DB_URL");
+			DB_USER = System.getenv("DB_USER");
+			DB_PASSWORD = System.getenv("DB_PASSWORD");
+		} else {
+			Dotenv env = Dotenv.load();
+			DB_URL = env.get("DB_URL");
+			DB_USER = env.get("DB_USER");
+			DB_PASSWORD = env.get("DB_PASSWORD");
+		}
+	 Connection connection = DriverManager.getConnection(DB_URL, DB_USER,DB_PASSWORD);
 	 return connection;
 	}
 	
@@ -73,7 +87,7 @@ public class UserDAO {
 		Connection connection = getConnection();
 		
 		// Prepare SQL Statement
-		String insertQuery = "INSERT INTO freshstocks (userID,firstname,gender,mobile_number,date_of_birth,email,password) VALUES (?,?,?,?,?,?,?);";
+		String insertQuery = "INSERT INTO freshstocks (userID,Fisrtname,gender,mobile_number,date_of_birth,email,password) VALUES (?,?,?,?,?,?,?);";
 		PreparedStatement pst = connection.prepareStatement(insertQuery);
 		pst.setInt(1, user.getUserID());
 		pst.setString(2, user.getUsername());
@@ -94,7 +108,7 @@ public class UserDAO {
 		   
 		   Connection connection = getConnection();
 		   
-		   String selectQuery = "UPDATE freshstocks SET gender = ?, mobile_number = ?, date_of_birth = ? WHERE userID = " + userID + ";";
+		   String selectQuery = "UPDATE user_details SET gender = ?, mobile_number = ?, date_of_birth = ? WHERE userID = " + userID + ";";
 		   PreparedStatement pst = connection.prepareStatement(selectQuery);
 		   pst.setString(1, user.getGender());
 		   pst.setString(2, user.getMobile_number());

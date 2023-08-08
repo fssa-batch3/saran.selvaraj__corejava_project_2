@@ -13,7 +13,7 @@ public class TestRegister {
 
 //	public static void main(String[] args) {
 //
-//		User user1 = new User("Kotti_784","Male" ,"9500320194","2004-12-26", "hacker4@gmail.com","Kottnn@123");
+//		User user1 = new User("saran","Male" ,"9500320194","2004-12-26", "hacker4@gmail.com","Kottnn@123");
 //		UserService userService = new UserService();
 //
 //		try {

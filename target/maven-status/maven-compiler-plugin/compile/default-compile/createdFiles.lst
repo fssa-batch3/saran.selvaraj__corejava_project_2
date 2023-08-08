@@ -1,8 +1,1 @@
-petMall\services\exception\serviceException.class
-petMall\validation\exception\InvalidUserException.class
-petMall\dao\UserDAO.class
-petMall\services\UserService.class
-petMall\dao\exception\DAOException.class
-petMall\model\User.class
-petMall\App.class
-petMall\validation\UserValidator.class
+com\fssa\petmall\model\User.class

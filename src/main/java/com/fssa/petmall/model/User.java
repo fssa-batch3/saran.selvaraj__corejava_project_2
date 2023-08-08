@@ -3,7 +3,7 @@ package com.fssa.petmall.model;
 public class User {
 
 	private int userID;
-	private String firstname;
+	private String fisrtname;
 	private String gender;
 	private String mobile_number;
 	private String date_of_birth;
@@ -11,10 +11,10 @@ public class User {
 	public String password;
 	
 	//register
-	public User(String firstname, String gender , String mobile_number , String date_of_birth, String email, String password) {
+	public User(String fisrtname, String gender , String mobile_number , String date_of_birth, String email, String password) {
 		super();
 		this.userID = userID;
-		this.firstname = firstname;
+		this.fisrtname = fisrtname;
 		this.gender = gender;
 		this.mobile_number = mobile_number;
 		this.date_of_birth = date_of_birth;
@@ -44,7 +44,7 @@ public class User {
 	}
 	
 	public String toString() {
-		return "UserID: " + userID + "username: " + firstname + "gender: " + gender + "mobile_number: " + mobile_number + "date_of_birth: " + date_of_birth + "Email: " + email + " Password: " + password;
+		return "UserID: " + userID + "username: " + fisrtname + "gender: " + gender + "mobile_number: " + mobile_number + "date_of_birth: " + date_of_birth + "Email: " + email + " Password: " + password;
 	}
 
 	public int getUserID() {
@@ -56,11 +56,11 @@ public class User {
 	}
 
 	public String getUsername() {
-		return firstname;
+		return fisrtname;
 	}
 
-	public void setUsername(String username) {
-		this.firstname = username;
+	public void setUsername(String fisrtname) {
+		this.fisrtname = fisrtname;
 	}
 
 	public String getGender() {
