@@ -1,32 +1,37 @@
 package com.fssa.petmall.model;
 
+
 public class User {
 
 	private int userID;
-	private String fisrtname;
+	private String first_name;
+	public String last_name;
 	private String gender;
-	private String mobile_number;
+	private String Phone_number;
 	private String date_of_birth;
 	public String email;
 	public String password;
 	
+	
 	//register
-	public User(String fisrtname, String gender , String mobile_number , String date_of_birth, String email, String password) {
+	public User(String first_name,String last_name, String gender , String Phone_number , String date_of_birth, String email, String password) {
 		super();
 		this.userID = userID;
-		this.fisrtname = fisrtname;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.gender = gender;
-		this.mobile_number = mobile_number;
+		this.Phone_number = Phone_number;
 		this.date_of_birth = date_of_birth;
 		this.email = email;
 		this.password = password;
+		
 	}
 	
 	//update
-	public User(String gender, String mobile_number , String date_of_birth) {
+	public User(String gender, String Phone_number , String date_of_birth) {
 		super();
 		this.gender = gender;
-		this.mobile_number = mobile_number;
+		this.Phone_number = Phone_number;
 		this.date_of_birth = date_of_birth;
 	}
 	
@@ -44,7 +49,7 @@ public class User {
 	}
 	
 	public String toString() {
-		return "UserID: " + userID + "username: " + fisrtname + "gender: " + gender + "mobile_number: " + mobile_number + "date_of_birth: " + date_of_birth + "Email: " + email + " Password: " + password;
+		return "UserID: " + userID + "First_name: " + first_name +"last_name"+last_name+ "gender: " + gender + "Phone_number: " + Phone_number + "date_of_birth: " + date_of_birth + "Email: " + email + " Password: " + password;
 	}
 
 	public int getUserID() {
@@ -55,12 +60,20 @@ public class User {
 		this.userID = userID;
 	}
 
-	public String getUsername() {
-		return fisrtname;
+	public String getfirst_name() {
+		return first_name;
 	}
 
-	public void setUsername(String fisrtname) {
-		this.fisrtname = fisrtname;
+	public void setfirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+	
+	public String getlast_name() {
+		return last_name;
+	}
+
+	public void setlast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public String getGender() {
@@ -71,12 +84,12 @@ public class User {
 		this.gender = gender;
 	}
 
-	public String getMobile_number() {
-		return mobile_number;
+	public String getPhone_number() {
+		return Phone_number;
 	}
 
-	public void setMobile_number(String mobile_number) {
-		this.mobile_number = mobile_number;
+	public void setPhone_number(String Phone_number) {
+		this.Phone_number = Phone_number;
 	}
 
 	public String getDate_of_birth() {

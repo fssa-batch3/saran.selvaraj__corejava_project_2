@@ -3,9 +3,10 @@ import java.sql.SQLException;
 
 import com.fssa.petmall.dao.UserDAO;
 import com.fssa.petmall.model.User;
+import com.fssa.petmall.services.exception.ServiceException;
 import com.fssa.petmall.validation.UserValidator;
 import com.fssa.petmall.validation.exception.InvalidUserException;
-import com.google.protobuf.ServiceException;
+
 
 public class UserService {
 
@@ -15,7 +16,7 @@ public class UserService {
 		try {
 		if(UserValidator.ValidateUser(user) && !userDAO.EmailExist(user1)) { 
 			if(userDAO.register(user)) {
-				System.out.println(user.getUsername() + " Successfully Registered!");
+				System.out.println(user.getfirst_name() + " Successfully Registered!");
 				return true;
 			} else {
 				return false;
@@ -45,10 +46,10 @@ public class UserService {
 	
 	
 	//delete user
-	public static boolean DeleteUser(int userID , int is_deleted) throws ServiceException {
+	public static boolean DeleteUser(int userID,int is_Deleted) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 		try {
-			if(userDAO.Delete(userID, is_deleted)) {
+			if(userDAO.Delete(userID,is_Deleted)) {
 				System.out.println("User Details Successfully Deleted!");
 				return true;
 			} else {

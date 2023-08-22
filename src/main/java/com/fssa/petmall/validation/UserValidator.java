@@ -7,11 +7,12 @@ import java.util.regex.PatternSyntaxException;
 import com.fssa.petmall.model.User;
 import com.fssa.petmall.validation.exception.InvalidUserException;
 
+
 public class UserValidator {
 	
 	// if three conditions valid then user valid
 	public static boolean ValidateUser(User user) throws InvalidUserException {
-		if(user != null && validateName(user.getUsername()) && validateEmail(user.getEmail()) 
+		if(user != null && validateName(user.getfirst_name())&& validateName(user.getlast_name()) && validateEmail(user.getEmail()) 
 				&& validatePassword(user.getPassword())) {
 			return true;
 		} else {
@@ -71,8 +72,6 @@ public class UserValidator {
 		
 
     }
-	public static void main(String[] args) {
-		System.out.println("hi");
-	}
+	
 }
 

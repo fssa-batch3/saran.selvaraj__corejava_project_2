@@ -1,1 +1,3 @@
 com\fssa\petmall\model\User.class
+com\fssa\petmall\dao\PetProductDAO.class
+com\fssa\petmall\model\PetProduct.class
