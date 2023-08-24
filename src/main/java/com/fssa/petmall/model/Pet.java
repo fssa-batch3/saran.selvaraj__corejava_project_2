@@ -9,17 +9,24 @@ public class Pet {
 	
 	public Pet(int UniqueID,String real_name,int Price,String Vaccination) {
 		super();
-		this.UniqueID = UniqueID;
-		this.Real_name = Real_name;
-		this.Price = Price;
-		this.vaccination = Vaccination;
+		Pet.UniqueID = UniqueID;
+		Pet.Real_name = real_name;
+		Pet.Price = Price;
+		Pet.vaccination = Vaccination;
+	}
+	public Pet(String real_name,int Price,String Vaccination) {
+		super();
+		Pet.UniqueID = UniqueID;
+		Pet.Real_name = real_name;
+		Pet.Price = Price;
+		Pet.vaccination = Vaccination;
 	}
 	public static int getUniqueID() {
 		return UniqueID;
 	}
 
 	public void setUniqueID(int uniqueID) {
-		UniqueID = uniqueID;
+		Pet.UniqueID = uniqueID;
 	}
 
 	public static String getReal_name() {
@@ -27,7 +34,7 @@ public class Pet {
 	}
 
 	public void setReal_name(String real_name) {
-		Real_name = real_name;
+		Pet.Real_name = real_name;
 	}
 
 	public static int getPrice() {
@@ -35,7 +42,7 @@ public class Pet {
 	}
 
 	public void setPrice(int price) {
-		Price = price;
+		Pet.Price = price;
 	}
 
 	public static String getVaccination() {
@@ -43,7 +50,7 @@ public class Pet {
 	}
 
 	public void setVaccination(String vaccination) {
-		this.vaccination = vaccination;
+		Pet.vaccination = vaccination;
 	}
 	
 }
