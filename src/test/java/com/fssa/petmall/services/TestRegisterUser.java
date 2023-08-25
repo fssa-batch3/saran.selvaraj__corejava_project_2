@@ -12,7 +12,7 @@ public class TestRegisterUser {
 
     	public static void main(String[] args) {
     
-    		 User user1 = new User("saran","selvaraj","Male" ,"9500320194","2004-12-26", "acker4@gmail.com","Kottnn@123");
+    		 User user1 = new User("saran","selvaraj","Male" ,"9500320194","2004-12-26", "Hacker4@gmail.com","Kottnn@123");
     		 UserService userService = new UserService();
     		 System.out.println("Registration not successful! Error : Validation Failed Or User Already Exist");
     
@@ -22,7 +22,7 @@ public class TestRegisterUser {
     	@Test
     	public void testRegistrationSuccess() {
     		 UserService userService = new UserService();
-    		 User user1 = new User("Kotti_784","yan","Male" ,"9500320194","2004-12-26", "acker4@gmail.com","Kotie@123");
+    		 User user1 = new User("Kotti_784","yan","Male" ,"9500320194","2004-12-26", "Saran2004@gmail.com","Kotie@123");
     		 try {
     
     		 assertTrue(UserService.registerUser(user1));
