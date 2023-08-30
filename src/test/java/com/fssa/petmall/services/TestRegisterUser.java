@@ -22,13 +22,13 @@ public class TestRegisterUser {
     	@Test
     	public void testRegistrationSuccess() {
     		 UserService userService = new UserService();
-    		 User user1 = new User("Kotti_784","yan","Male" ,"9500320194","2004-12-26", "Saran2004@gmail.com","Kotie@123");
+    		 User user1 = new User("Kotti_784","kottiyan","Male" ,"9500320194","2004-12-26", "Ajmal@gmail.com","Kotie@123");
     		 try {
     
     		 assertTrue(UserService.registerUser(user1));
     		 }
     		 catch (ServiceException e) {
-    		 e.printStackTrace();
+    		     
     			 System.out.println("Unable to register user");
     		 }
     		 
@@ -38,7 +38,7 @@ public class TestRegisterUser {
     	public void testInvalidPassword() {
     
     		 UserService userService = new UserService();
-    		 User user1 = new User("Kotti_784","yan","Male" ,"9500320194","2004-12-26", " acker4@gmail.com","Kotti123");
+    		 User user1 = new User("Kotti_784","yan","Male" ,"9500320194","2004-12-26", "hasadwacker4@gmail.com","Kotti@123");
     		 try {
     		    assertFalse(UserService.registerUser(user1));
     		 
@@ -51,16 +51,37 @@ public class TestRegisterUser {
          	 
     	}
     
-//    	@Test
-//    	public void testUserNull() throws ServiceException {
-//    
-//    		 UserService userService = new UserService();
-//    		 
-//    		 User user1 = new User("","" ,"","", "","");
-//    		 
-//    		 UserService.registerUser(user1);
-//    		 
-//    		 
-//    	} 
+    	 @Test
+    	    public void testRegisterUserValid() {
+    	        User user = new User("John", "Doe", "Male", "1234567890", "2000-01-01", "john@example.com", "password");
+    	        try {
+    	            assertTrue(UserService.registerUser(user));
+    	        } catch (ServiceException e) {
+    	            fail("Exception thrown: " + e.getMessage());
+    	        }
+    	    }
+
+    	    @Test
+    	    public void testRegisterUserInvalid() {
+    	        User user = new User("John", "Doe", "Male", "1234567890", "2000-01-01", "john@example.com", "pass");
+    	        try {
+    	            assertFalse(UserService.registerUser(user));
+    	        } catch (ServiceException e) {
+    	            fail("Exception thrown: " + e.getMessage());
+    	        }
+    	    }
+    	    
+
+    	    @Test
+    	    public void testRegisterUserNullUser() {
+    	        try {
+    	            UserService.registerUser(null); // This will cause a NullPointerException
+    	            fail("Expected NullPointerException was not thrown");
+    	        } catch (NullPointerException e) {
+    	            // The exception is expected, so the test passes
+    	        } catch (ServiceException e) {
+    	            fail("Unexpected ServiceException thrown: " + e.getMessage());
+    	        }
+    	    }
 
 }

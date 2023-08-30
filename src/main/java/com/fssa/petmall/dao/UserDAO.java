@@ -12,17 +12,18 @@ public class UserDAO {
 
 	
 	 //connect to database
-	Utills utills = new Utills();
+//	Utils utils = new Utils();
 	boolean match = false;
 //	Get user from DB - Login
    public boolean login(User user) throws SQLException {
 		
 	   
-	   Connection connection = utills.getConnection();
+	   Connection connection = Utills.getConnection();
 	   
 	   String selectQuery = "SELECT * FROM user_details WHERE email = ?";
 	   PreparedStatement pst = connection.prepareStatement(selectQuery);
 	   pst.setString(1, user.email);
+	   
 	   ResultSet resultSet = pst.executeQuery();
 	   
 	   while (resultSet.next()) {
@@ -42,7 +43,7 @@ public class UserDAO {
    public boolean EmailExist(User user) throws SQLException {
 		
 	   
-	   Connection connection = utills.getConnection();
+	   Connection connection = Utills.getConnection();
 	   
 	   String selectQuery = "SELECT * FROM user_details WHERE email = ?";
 	   PreparedStatement pst = connection.prepareStatement(selectQuery);
@@ -66,7 +67,7 @@ public class UserDAO {
 	//add new user to DB - Register
 	public boolean register(User user) throws SQLException {
 		//Get Connection
-		Connection connection = utills.getConnection();
+		Connection connection = Utills.getConnection();
 		
 		// Prepare SQL Statement
 		String insertQuery = "INSERT INTO user_details (First_name,Last_name,gender,Phone_number,date_of_birth,email,password) VALUES (?,?,?,?,?,?,?);";
@@ -89,7 +90,7 @@ public class UserDAO {
 	// update user
 	public boolean Update(User user , int userID) throws SQLException {
 		   
-		   Connection connection = utills.getConnection();
+		   Connection connection = Utills.getConnection();
 		   
 		   String selectQuery = "UPDATE user_details SET gender = ?, Phone_number = ?, date_of_birth = ? WHERE userID = " + userID + ";";
 		   PreparedStatement pst = connection.prepareStatement(selectQuery);
@@ -108,7 +109,7 @@ public class UserDAO {
 	// update user
 	public boolean Delete(int userID , int is_deleted) throws SQLException {
 		   
-		   Connection connection = utills.getConnection();
+		   Connection connection = Utills.getConnection();
 		   
 		   String is_delete = Integer.toString(is_deleted);
 		   

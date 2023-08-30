@@ -1,6 +1,7 @@
 package com.fssa.petmall.utills;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -8,23 +9,28 @@ import java.sql.SQLException;
 
 public class Utills {
 
-	public Connection getConnection() throws SQLException {
-		String DB_URL;
-		String DB_USER; 
-		String DB_PASSWORD;
-		
-		
-//		if (System.getenv("CI") != null) {
-			DB_URL = System.getenv("DB_URL");
-			DB_USER = System.getenv("DB_USER");
-			DB_PASSWORD = System.getenv("DB_PASSWORD");
-//		} else {
-//			Dotenv env = Dotenv.load();
-//			DB_URL = env.get("DB_URL");
-//			DB_USER = env.get("DB_USER");
-//			DB_PASSWORD = env.get("DB_PASSWORD");
-//		}
-	 Connection connection = DriverManager.getConnection(DB_URL, DB_USER,DB_PASSWORD);
-	 return connection;
-	}
+
+    // Call the database connection
+    public static Connection getConnection() {
+
+        // Database URL and credentials
+        final String DB_URL;
+        final String DB_USER;
+        final String DB_PASSWORD;
+        
+        DB_URL = System.getenv("DB_URL");
+        DB_USER = System.getenv("DB_USER");
+        DB_PASSWORD = System.getenv("DB_PASSWORD");
+
+        try {
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+			return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Unable to Connect to Database",e);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Database Driver class Not found",e);
+		}
+    }
 }

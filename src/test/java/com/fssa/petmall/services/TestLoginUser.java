@@ -26,7 +26,7 @@ public class TestLoginUser {
 	public void TestValidUser() throws ServiceException {
 		User user1 = new User("acker4@gmail.com","Kotie@123");
 		assertTrue(UserService.LoginUser(user1));
-	}
+	}   
 	
 	@Test
 	public void TestInValidUser() throws ServiceException {

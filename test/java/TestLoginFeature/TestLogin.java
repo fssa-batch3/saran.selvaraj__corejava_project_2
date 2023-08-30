@@ -2,19 +2,14 @@ package TestLoginFeature;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
-
-import com.google.protobuf.ServiceException;
-
-import freshstocks.model.User;
-import freshstocks.services.UserService;
-
+import petmall.model.User;
+import petmall.services.UserService;
 public class TestLogin {
 
 	public static void main(String[] args) {
 
-		User user1 = new User("hacker4@gmail.com","Kotie@123");
+		User user1 = new User("hacker4@gmail.com","Saran@123");
 		UserService userService = new UserService();
 
 		try {
