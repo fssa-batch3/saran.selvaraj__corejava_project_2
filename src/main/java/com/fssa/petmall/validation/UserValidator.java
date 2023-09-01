@@ -6,7 +6,9 @@ import java.util.regex.PatternSyntaxException;
 
 import com.fssa.petmall.model.User;
 import com.fssa.petmall.validation.exception.InvalidUserException;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UserValidator {
 	
@@ -72,6 +74,47 @@ public class UserValidator {
 		
 
     }
+	public static boolean validateDateOfBirth(String dateOfBirth) {
+        if (dateOfBirth == null || dateOfBirth.isEmpty()) {
+            return false;
+        }
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false); // Disable lenient parsing
+        
+        try {
+            Date dob = dateFormat.parse(dateOfBirth);
+            
+            // Check if date of birth is in the past
+            Date currentDate = new Date();
+            if (dob.after(currentDate)) {
+                return false;
+            }
+            
+            return true;
+        } catch (ParseException e) {
+            return false; // Invalid date format
+        }
+    }
 	
+	public static boolean validateGender(String gender) {
+        if (gender == null || gender.isEmpty()) {
+            return false;
+        }
+        gender = gender.toLowerCase();
+        return gender.equals("male") || gender.equals("female");
+    }
+	
+
+    public static boolean validatePhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.isEmpty()) {
+            return false;
+        }
+
+        // Regular expression pattern for a valid phone number (change as needed)
+        String regex = "^[0-9]{10}$"; // Assuming a 10-digit phone number
+        
+        return Pattern.matches(regex, phoneNumber);
+    }
 }
 
