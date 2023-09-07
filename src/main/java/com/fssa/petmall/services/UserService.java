@@ -14,7 +14,7 @@ public class UserService {
 		UserDAO userDAO = new UserDAO();
 		User user1 = new User(user.getEmail(),user.getPassword());
 		try {
-		if(UserValidator.ValidateUser(user) && !userDAO.EmailExist(user1)) { 
+		if(UserValidator.validateUser(user) && !userDAO.emailExist(user1)) { 
 			if(userDAO.register(user)) {
 				System.out.println(user.getfirst_name() + " Successfully Registered!");
 				return true;
@@ -30,10 +30,10 @@ public class UserService {
 	}
 	
 	//update user
-	public static boolean UpdateUser(User user , String email) throws ServiceException {
+	public static boolean updateUser(User user , String email) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 		try {
-			if(userDAO.Update(user , email)) {
+			if(userDAO.update(user , email)) {
 				System.out.println("User Details Successfully Updated!");
 				return true;
 			} else {
@@ -46,10 +46,10 @@ public class UserService {
 	
 	
 	//delete user
-	public static boolean DeleteUser(String email) throws ServiceException {
+	public static boolean deleteUser(String email) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 		try {
-			if(userDAO.Delete(email)) {
+			if(userDAO.delete(email)) {
 				System.out.println("User Details Successfully Deleted!");
 				return true;
 			} else {
@@ -61,7 +61,7 @@ public class UserService {
 	}
 	
 	
-	public static boolean LoginUser(User user) throws ServiceException {
+	public static boolean loginUser(User user) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 		try {
 			if(userDAO.login(user)) {

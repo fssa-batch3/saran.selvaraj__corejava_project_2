@@ -29,11 +29,11 @@ public class UserDAO {
 	   
 	   while (resultSet.next()) {
 		   String emailID = resultSet.getString("email");
-		   String Password = resultSet.getString("password");
+		   String password = resultSet.getString("password");
 		   
-		   System.out.println("Email: " + emailID + " Password: " + Password);
+		   System.out.println("Email: " + emailID + " Password: " + password);
 		   
-		   if(user.getEmail().equals(emailID) && user.getPassword().equals(Password)) {
+		   if(user.getEmail().equals(emailID) && user.getPassword().equals(password)) {
 			   match = true;
 		   }
 	   }
@@ -43,7 +43,7 @@ public class UserDAO {
 	}
    
    //Email Not Exist
-   public boolean EmailExist(User user) throws SQLException {
+   public boolean emailExist(User user) throws SQLException {
 		
 	   
 	   Connection connection = Utills.getConnection();
@@ -55,9 +55,9 @@ public class UserDAO {
 	   
 	   while (resultSet.next()) {
 		   String emailID = resultSet.getString("email");
-		   String Password = resultSet.getString("password");
+		   String password = resultSet.getString("password");
 		   
-		   System.out.println("Email: " + emailID + " Password: " + Password);
+		   System.out.println("Email: " + emailID + " Password: " + password);
 		   
 		   if(user.getEmail().equals(emailID)) {
 			   match = true;
@@ -95,7 +95,7 @@ public class UserDAO {
 	}
 	
 	// update user
-	public boolean Update(User user , String email) throws SQLException {
+	public boolean update(User user , String email) throws SQLException {
 		   
 		   Connection connection = Utills.getConnection();
 		   
@@ -119,7 +119,7 @@ public class UserDAO {
 	
 	//delete user
 	// update user
-	public boolean Delete( String email) throws SQLException {
+	public boolean delete( String email) throws SQLException {
 		   
 		   Connection connection = Utills.getConnection();
 		   

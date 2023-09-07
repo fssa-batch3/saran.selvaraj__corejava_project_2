@@ -1,6 +1,6 @@
 package com.fssa.petmall.model;
 
-import java.sql.Date;
+
 
 public class Pet {
 	private static String uniqueID;
@@ -92,7 +92,7 @@ public class Pet {
     }
 
     // Getter and Setter for DOB
-    public String getDob() {
+    public static String getDob() {
         return dob;
     }
 
@@ -101,7 +101,7 @@ public class Pet {
     }
 
     // Getter and Setter for Special Talent
-    public String getSpecialTalent() {
+    public static String getSpecialTalent() {
         return specialTalent;
     }
 
@@ -110,7 +110,7 @@ public class Pet {
     }
 
     // Getter and Setter for Behavior
-    public String getBehavior() {
+    public static String getBehavior() {
         return behavior;
     }
 
@@ -128,7 +128,7 @@ public class Pet {
     }
 
     // Getter and Setter for Mobile Number
-    public String getMobileNumber() {
+    public static String getMobileNumber() {
         return mobileNumber;
     }
 

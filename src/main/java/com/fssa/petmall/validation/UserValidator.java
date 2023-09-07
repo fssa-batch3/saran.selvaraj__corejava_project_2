@@ -1,6 +1,7 @@
 package com.fssa.petmall.validation;
 
-import java.util.regex.Matcher;
+
+
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -13,7 +14,7 @@ import java.util.Date;
 public class UserValidator {
 	
 	// if three conditions valid then user valid
-	public static boolean ValidateUser(User user) throws InvalidUserException {
+	public static boolean validateUser(User user) throws InvalidUserException {
 		if(user != null && validateName(user.getfirst_name())&& validateName(user.getlast_name()) && validateEmail(user.getEmail()) 
 				&& validatePassword(user.getPassword())) {
 			return true;
@@ -42,8 +43,8 @@ public class UserValidator {
 	public static boolean validatePassword(String password) {
 		boolean match = false;
 		try {
-			String pattern_string = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])(?=.*[^\\s]).{8,}$";
-			match = Pattern.matches(pattern_string, password);
+			String patternstring = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])(?=.*[^\\s]).{8,}$";
+			match = Pattern.matches(patternstring, password);
 			if (match) {
 				System.out.println("Valid password.");
 			} else {

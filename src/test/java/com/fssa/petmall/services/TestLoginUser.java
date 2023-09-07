@@ -9,19 +9,19 @@ import org.junit.jupiter.api.Test;
 import com.fssa.petmall.model.User;
 import com.fssa.petmall.services.exception.ServiceException;
 
-public class TestLoginUser {
+class TestLoginUser {
 
 	
 	@Test
-	public void TestValidUser() throws ServiceException {
+	void TestValidUser() throws ServiceException {
 		User user1 = new User("acker4@gmail.com","Kotie@123");
-		assertTrue(UserService.LoginUser(user1));
+		assertTrue(UserService.loginUser(user1));
 	}   
 	
 	@Test
-	public void TestInValidUser() throws ServiceException {
+	void TestInValidUser() throws ServiceException {
 		User user1 = new User("acker4@gmail.com","Hacke@123");
-		assertFalse(UserService.LoginUser(user1));
+		assertFalse(UserService.loginUser(user1));
 	}
 	
 }

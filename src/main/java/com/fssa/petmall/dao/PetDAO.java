@@ -21,17 +21,17 @@ public class PetDAO {
 
 	    public boolean createPet(Pet pet) {
 	        String insertQuery = "INSERT INTO pet_details (realName, personalName, dob, specialTalent, behavior, price, mobileNumber, vaccinationCertificate,image) VALUES (?, ?, ?, ?, ? , ?, ?, ?, ?)";
-	        Connection connection = utills.getConnection();
+	        Connection connection = Utills.getConnection();
 	        try (PreparedStatement pst = connection.prepareStatement(insertQuery)) {
-	            pst.setString(1, pet.getRealName());
-	            pst.setString(2, pet.getPersonalName());
-	            pst.setString(3, pet.getDob()); // Convert java.util.Date to java.sql.Date
-	            pst.setString(4, pet.getSpecialTalent());
-	            pst.setString(5, pet.getBehavior());
-	            pst.setString(6, pet.getPrice());
-	            pst.setString(7, pet.getMobileNumber());
-	            pst.setString(8, pet.getVaccinationCertificate());
-	            pst.setString(9, pet.getpetimageurl());
+	            pst.setString(1, Pet.getRealName());
+	            pst.setString(2, Pet.getPersonalName());
+	            pst.setString(3, Pet.getDob()); // Convert java.util.Date to java.sql.Date
+	            pst.setString(4, Pet.getSpecialTalent());
+	            pst.setString(5, Pet.getBehavior());
+	            pst.setString(6, Pet.getPrice());
+	            pst.setString(7, Pet.getMobileNumber());
+	            pst.setString(8, Pet.getVaccinationCertificate());
+	            pst.setString(9, Pet.getpetimageurl());
 
 	            int rowsInserted = pst.executeUpdate();
 	            connection.close();
@@ -44,16 +44,16 @@ public class PetDAO {
 
 	    public boolean updatePet(Pet pet) {
 	        String insertQuery = "INSERT INTO pet_details (realName, personalName, dob, specialTalent, behavior, price, mobileNumber, vaccinationCertificate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	        Connection connection = utills.getConnection();
+	        Connection connection = Utills.getConnection();
 	        try (PreparedStatement pst = connection.prepareStatement(insertQuery)) {
-	            pst.setString(1, pet.getRealName());
-	            pst.setString(2, pet.getPersonalName());
-	            pst.setString(3, pet.getDob()); // Convert java.util.Date to java.sql.Date
-	            pst.setString(4, pet.getSpecialTalent());
-	            pst.setString(5, pet.getBehavior());
-	            pst.setString(6, pet.getPrice());
-	            pst.setString(7, pet.getMobileNumber());
-	            pst.setString(8, pet.getVaccinationCertificate());
+	            pst.setString(1, Pet.getRealName());
+	            pst.setString(2, Pet.getPersonalName());
+	            pst.setString(3, Pet.getDob()); // Convert java.util.Date to java.sql.Date
+	            pst.setString(4, Pet.getSpecialTalent());
+	            pst.setString(5, Pet.getBehavior());
+	            pst.setString(6, Pet.getPrice());
+	            pst.setString(7, Pet.getMobileNumber());
+	            pst.setString(8, Pet.getVaccinationCertificate());
 
 	            int rowsInserted = pst.executeUpdate();
 	            connection.close();
@@ -64,8 +64,8 @@ public class PetDAO {
 	            return false;
 	        }
 	    }
-		public boolean DeletePet(int uniqueID , int isNotBought) throws SQLException {
-			Connection connection = utills.getConnection();
+		public boolean deletePet(int uniqueID , int isNotBought) throws SQLException {
+			Connection connection = Utills.getConnection();
 			
 			
 			 String selectQuery = "UPDATE pet_details SET isNotBought = ? WHERE uniqueId = " + uniqueID + ";";
@@ -87,8 +87,8 @@ public class PetDAO {
 		        try (ResultSet resultSet = pst.executeQuery()) {
 		            
 		            while (resultSet.next()) {
-		            int ID = resultSet.getInt("uniqueID");
-		            String uniqueID = String.valueOf(ID);
+		            int id = resultSet.getInt("uniqueID");
+		            String uniqueID = String.valueOf(id);
 					String petimageurl = resultSet.getString("petimageurl");
 					String realName = resultSet.getString("realName");
 					String personalName = resultSet.getString("personalName");
@@ -119,8 +119,8 @@ public class PetDAO {
 		        try (ResultSet resultSet = pst.executeQuery()) {
 		            
 		            while (resultSet.next()) {
-		            	int ID = resultSet.getInt("uniqueID");
-			            String uniqueID = String.valueOf(ID);
+		            	int id = resultSet.getInt("uniqueID");
+			            String uniqueID = String.valueOf(id);
 						String petimageurl = resultSet.getString("petimageurl");
 						String realName = resultSet.getString("realName");
 						String personalName = resultSet.getString("personalName");

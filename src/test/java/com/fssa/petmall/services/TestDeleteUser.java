@@ -8,24 +8,24 @@ import com.fssa.petmall.model.User;
 import com.fssa.petmall.services.UserService;
 import com.fssa.petmall.services.exception.ServiceException;
 
-public class TestDeleteUser {
+class TestDeleteUser {
 
 	
 	
 	@Test
-	public void TestDeleteSuccess() throws ServiceException {
+	void TestDeleteSuccess() throws ServiceException {
 		
 		String email = "saran@gmail.com";
 		UserService userService = new UserService();
-        assertTrue(userService.DeleteUser(email));
+        assertTrue(userService.deleteUser(email));
 	}
 	
 	@Test
-	public void TestDeleteFail() throws ServiceException {
+	void TestDeleteFail() throws ServiceException {
 		
 		String email = "saran2005@gmail.com";
 		UserService userService = new UserService();
-        assertFalse(userService.DeleteUser(email));
+        assertFalse(userService.deleteUser(email));
 	}
 	
 	

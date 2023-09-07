@@ -14,12 +14,12 @@ import com.fssa.petmall.validation.PetValidator;
 
 public class PetService {
 	
-	public static boolean createPet(Pet pet) throws ServiceException {
+	public static boolean createPet(Pet pet) {
 		PetDAO petDAO = new PetDAO();
 		Pet pet1 = new Pet(Pet.getpetimageurl(),Pet.getRealName(),Pet.getPersonalName(),pet.getDob(), pet.getSpecialTalent(), pet.getBehavior(), Pet.getPrice(),pet.getMobileNumber(), Pet.getVaccinationCertificate());
-		if(PetValidator.validatePetName(pet.getRealName(),PetValidator.validatePetPrice(pet.getPrice()))){ 
+		if(PetValidator.validatePetName(Pet.getRealName()) && PetValidator.validatePetPrice(Pet.getPrice())){ 
 			if(petDAO.createPet(pet1)) {
-				System.out.println(pet.getRealName() + " Successfully Registered!");
+				System.out.println(Pet.getRealName() + " Successfully Registered!");
 				return true;
 			} else {
 				return false;
@@ -38,9 +38,9 @@ public class PetService {
 	}
 	
 	public List<Pet> getAllPet() throws ServiceException {
-		PetDAO PetDAO = new PetDAO();
+		PetDAO petDAO = new PetDAO();
 		try {
-			return PetDAO.getAllCourse();
+			return petDAO.getAllCourse();
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
@@ -61,7 +61,7 @@ public class PetService {
 	public static boolean deletePet(int uniqueID , int isNotBought) throws ServiceException {
 		PetDAO petDAO = new PetDAO();
 		try {
-			if(petDAO.DeletePet( uniqueID,isNotBought)) {
+			if(petDAO.deletePet( uniqueID,isNotBought)) {
 				System.out.println("User Details Successfully Deleted!");
 				return true;
 			} else {

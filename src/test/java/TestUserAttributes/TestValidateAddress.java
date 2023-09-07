@@ -10,13 +10,13 @@ import com.google.protobuf.ServiceException;
 import com.fssa.petmall.validation.UserValidator;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestValidateAddress {
+class TestValidateAddress {
  
 	UserService userService = new UserService();
 	static UserValidator validator = new UserValidator();
 	
 	@Test
-	public static void TestAddressSuccess() throws ServiceException {	
+	void TestAddressSuccess() throws ServiceException {	
 		    String Address ="Mariyamman koil theru Palayam";
 			try {
 				assertTrue(validator.validateName(Address));
@@ -27,7 +27,7 @@ public class TestValidateAddress {
 	} 
 	
 	@Test
-	public static void TestAddressFailure() throws ServiceException {	
+	void TestAddressFailure() throws ServiceException {	
 		    String Address = null;
 			try {		
 				assertFalse(validator.validateName(Address));

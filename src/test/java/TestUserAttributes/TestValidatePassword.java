@@ -10,13 +10,13 @@ import com.google.protobuf.ServiceException;
 import com.fssa.petmall.validation.UserValidator;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestValidatePassword {
+class TestValidatePassword {
 	
 	UserService userService = new UserService();
 	static UserValidator validator = new UserValidator();
 	
 	@Test
-	public static void TestPasswordSuccess() throws ServiceException {	
+	void TestPasswordSuccess() throws ServiceException {	
 		    String Password ="JuneJupiter@2023";
 			try {
 				assertTrue(validator.validatePassword(Password));
@@ -27,7 +27,7 @@ public class TestValidatePassword {
 	} 
 
 	@Test
-	public static void TestPasswordFailure() throws ServiceException {	
+	void TestPasswordFailure() throws ServiceException {	
 		    String Password = null;
 			try {		
 				assertFalse(validator.validatePassword(Password));

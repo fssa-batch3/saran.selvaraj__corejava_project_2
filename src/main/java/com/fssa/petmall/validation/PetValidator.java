@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class PetValidator {
 
 	
-	public static boolean validatePetName(String name, boolean b) {
+	public static boolean validatePetName(String name) {
 		boolean match = false;
 		try {
 			String regex = "^[A-Za-z0-9_]{3,30}$";

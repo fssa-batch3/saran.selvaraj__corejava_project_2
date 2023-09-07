@@ -4,51 +4,51 @@ package com.fssa.petmall.model;
 public class User {
 
 	private int userID;
-	private String first_name;
-	public String last_name;
+	private String firstname;
+	public String lastname;
 	private String gender;
-	private String Phone_number;
-	private String date_of_birth;
+	private String Phonenumber;
+	private String dateofbirth;
 	public String email;
 	public String password;
-	public int is_deleted;
+	public int isdeleted;
 	
 	
 	//register
-	public User(String first_name,String last_name, String gender , String Phone_number , String date_of_birth, String email, String password) {
+	public User(String firstname,String lastname, String gender , String Phonenumber , String dateofbirth, String email, String password) {
 		super();
 		this.userID = userID;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.gender = gender;
-		this.Phone_number = Phone_number;
-		this.date_of_birth = date_of_birth;
+		this.Phonenumber = Phonenumber;
+		this.dateofbirth = dateofbirth;
 		this.email = email;
 		this.password = password;
 		
 	}
-	public User(String first_name,String last_name, String gender , String Phone_number , String date_of_birth) {
+	public User(String firstname,String lastname, String gender , String Phonenumber , String dateofbirth) {
 		super();
 		this.userID = userID;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.gender = gender;
-		this.Phone_number = Phone_number;
-		this.date_of_birth = date_of_birth;
+		this.Phonenumber = Phonenumber;
+		this.dateofbirth = dateofbirth;
 		this.email = email;
-		this.is_deleted = is_deleted;
+		this.isdeleted = isdeleted;
 	}
 	//update
-	public User(int userID,String first_name,String last_name, String gender , String Phone_number , String date_of_birth,String email,int is_deleted) {
+	public User(int userID,String firstname,String lastname, String gender , String Phonenumber , String dateofbirth,String email,int isdeleted) {
 		super();
 		this.userID = userID;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.gender = gender;
-		this.Phone_number = Phone_number;
-		this.date_of_birth = date_of_birth;
+		this.Phonenumber = Phonenumber;
+		this.dateofbirth = dateofbirth;
 		this.email = email;
-		this.is_deleted = is_deleted;
+		this.isdeleted = isdeleted;
 	}
 	
 	//delete
@@ -65,14 +65,14 @@ public class User {
 	}
 	
 	public String toString() {
-		return "UserID: " + userID + "First_name: " + first_name +"last_name"+last_name+ "gender: " + gender + "Phone_number: " + Phone_number + "date_of_birth: " + date_of_birth + "Email: " + email + " Password: " + password;
+		return "UserID: " + userID + "First_name: " + firstname +"last_name"+lastname+ "gender: " + gender + "Phone_number: " + Phonenumber + "date_of_birth: " + dateofbirth + "Email: " + email + " Password: " + password;
 	}
 
 	public int getIsDeleted() {
-		return is_deleted;
+		return isdeleted;
 	}
 	public void setIsDeleted(int is_deleted) {
-		this.is_deleted = is_deleted;
+		this.isdeleted = is_deleted;
 	}
 	public int getUserID() {
 		return userID;
@@ -83,19 +83,19 @@ public class User {
 	}
 
 	public String getfirst_name() {
-		return first_name;
+		return firstname;
 	}
 
 	public void setfirst_name(String first_name) {
-		this.first_name = first_name;
+		this.firstname = first_name;
 	}
 	
 	public String getlast_name() {
-		return last_name;
+		return lastname;
 	}
 
 	public void setlast_name(String last_name) {
-		this.last_name = last_name;
+		this.lastname = last_name;
 	}
 
 	public String getGender() {
@@ -107,19 +107,19 @@ public class User {
 	}
 
 	public String getPhone_number() {
-		return Phone_number;
+		return Phonenumber;
 	}
 
 	public void setPhone_number(String Phone_number) {
-		this.Phone_number = Phone_number;
+		this.Phonenumber = Phone_number;
 	}
 
 	public String getDate_of_birth() {
-		return date_of_birth;
+		return dateofbirth;
 	}
 
 	public void setDate_of_birth(String date_of_birth) {
-		this.date_of_birth = date_of_birth;
+		this.dateofbirth = date_of_birth;
 	}
 
 	public String getEmail() {
