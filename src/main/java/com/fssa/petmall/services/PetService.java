@@ -2,24 +2,24 @@ package com.fssa.petmall.services;
 
 import java.sql.SQLException;
 
+import java.util.List;
+
 import com.fssa.petmall.dao.PetDAO;
-import com.fssa.petmall.model.Pet;
-import com.fssa.petmall.model.User;
+import com.fssa.petmall.dao.exception.DAOException;
+import com.fssa.petmall.model.*;
+
 import com.fssa.petmall.services.exception.ServiceException;
 import com.fssa.petmall.validation.PetValidator;
-import com.fssa.petmall.validation.UserValidator;
-import com.fssa.petmall.validation.exception.InvalidPetException;
-import com.fssa.petmall.validation.exception.InvalidUserException;
+
 
 public class PetService {
 	
 	public static boolean createPet(Pet pet) throws ServiceException {
 		PetDAO petDAO = new PetDAO();
-		Pet pet1 = new Pet(Pet.getReal_name(),Pet.getPrice(), Pet.getVaccination());
-		try {
-		if(PetValidator.validatePetName(pet.getReal_name(),PetValidator.validatePetPrice(pet.getPrice()))){ 
+		Pet pet1 = new Pet(Pet.getpetimageurl(),Pet.getRealName(),Pet.getPersonalName(),pet.getDob(), pet.getSpecialTalent(), pet.getBehavior(), Pet.getPrice(),pet.getMobileNumber(), Pet.getVaccinationCertificate());
+		if(PetValidator.validatePetName(pet.getRealName(),PetValidator.validatePetPrice(pet.getPrice()))){ 
 			if(petDAO.createPet(pet1)) {
-				System.out.println(pet.getReal_name() + " Successfully Registered!");
+				System.out.println(pet.getRealName() + " Successfully Registered!");
 				return true;
 			} else {
 				return false;
@@ -27,32 +27,41 @@ public class PetService {
 		} else {
 			return false;
 		}
-		} catch ( SQLException e) {
+	}
+	public List<Pet> listCourse(int userID) throws ServiceException {
+		PetDAO courseDAO = new PetDAO();
+		try {
+			return courseDAO.readCourse(userID);
+		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
 	}
 	
-	//update user
-	public static boolean updatePet(String Vaccination,int price) throws ServiceException {
-		PetDAO petDAO = new PetDAO();
+	public List<Pet> getAllPet() throws ServiceException {
+		PetDAO PetDAO = new PetDAO();
 		try {
-			if(petDAO.updatePet(Vaccination , price)) {
-				System.out.println("User Details Successfully Updated!");
-				return true;
-			} else {
-				return false;
-			}
-		} catch (SQLException e) {
+			return PetDAO.getAllCourse();
+		} catch (DAOException e) {
 			throw new ServiceException(e);
+		}
+	}
+	//update user
+	public static boolean updatePet(Pet pet) throws ServiceException {
+		PetDAO petDAO = new PetDAO();
+		if(petDAO.updatePet(pet)) {
+			System.out.println("User Details Successfully Updated!");
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
 	
 	//delete user
-	public static boolean deletePet(int uniqueID , int is_deleted) throws ServiceException {
+	public static boolean deletePet(int uniqueID , int isNotBought) throws ServiceException {
 		PetDAO petDAO = new PetDAO();
 		try {
-			if(petDAO.DeletePet( uniqueID,is_deleted)) {
+			if(petDAO.DeletePet( uniqueID,isNotBought)) {
 				System.out.println("User Details Successfully Deleted!");
 				return true;
 			} else {
@@ -63,5 +72,5 @@ public class PetService {
 		}
 	}
 	
-
+	
 }

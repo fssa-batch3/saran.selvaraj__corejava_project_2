@@ -8,32 +8,32 @@ public class TestValidateRealName {
 
 	 @Test
 	    public void testCreatePetValidName() throws ServiceException {
-	        Pet pet = new Pet("Fluffy", 50, "Vaccinated");
+	        Pet pet = new Pet("Fluffy", null, null, null, null, null, "50", "Vaccinated", null);
 	        assertTrue(PetService.createPet(pet));
 	    }
 
 	    @Test
 	    public void testCreatePetShortName() throws ServiceException {
-	        Pet pet = new Pet("R", 25, "Not Vaccinated");
+	        Pet pet = new Pet("R", null, null, null, null, null, "25", "Not Vaccinated", null);
 	        assertFalse(PetService.createPet(pet));
 	    }
 
 	    @Test
 	    public void testCreatePetLongName() throws ServiceException {
-	        Pet pet = new Pet("BuddyTheAwesomeDogWithALongName", 60, "Vaccinated");
+	        Pet pet = new Pet("BuddyTheAwesomeDogWithALongName", null, null, null, null, null, "60", "Vaccinated", null);
 	        assertFalse(PetService.createPet(pet));
 	    }
 
 	    @Test
 	    public void testCreatePetNumericName() throws ServiceException {
-	        Pet pet = new Pet("123", 30, "Vaccinated");
+	        Pet pet = new Pet("123", null, null, null, null, null, "30", "Vaccinated", null);
 	        assertTrue(PetService.createPet(pet)); // Assuming numeric names are allowed
 	    }
 
 	    @Test
 	    public void testCreatePetDatabaseError() throws ServiceException {
 	        // Simulate a database error by passing invalid DB credentials
-	        Pet pet = new Pet("Milo", 60, "Vaccinated");
+	        Pet pet = new Pet("Milo", null, null, null, null, null, "60", "Vaccinated", null);
 	        assertFalse(PetService.createPet(pet));
 	    }
 }

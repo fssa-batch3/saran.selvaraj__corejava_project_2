@@ -17,32 +17,33 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestValidatePrice {
 	 @Test
 	    public void testCreatePetValidPrice() throws ServiceException {
-	        Pet pet = new Pet("Fluffy", 50, "Vaccinated");
+	        Pet pet = new Pet("Fluffy", null, null, null, null, null, "50", "Vaccinated", null);
 	        assertTrue(PetService.createPet(pet));
 	    }
 
 	    @Test
 	    public void testCreatePetZeroPrice() throws ServiceException {
-	        Pet pet = new Pet("Rex", 0, "Not Vaccinated");
+	        Pet pet = new Pet("Rex", null, null, null, null, null, "0", "Not Vaccinated", null);
 	        assertFalse(PetService.createPet(pet));
 	    }
 
 	    @Test
 	    public void testCreatePetNegativePrice() throws ServiceException {
-	        Pet pet = new Pet("Buddy", -10, "Vaccinated");
+	        Pet pet = new Pet("Buddy", null, null, null, null, null, "-10", "Vaccinated", null);
 	        assertFalse(PetService.createPet(pet));
 	    }
 
 	    @Test
 	    public void testCreatePetLargePrice() throws ServiceException {
-	        Pet pet = new Pet("Max", 1000000, "Vaccinated");
+	        Pet pet = new Pet("Max", null, null, null, null, null, "1000000", "Vaccinated", null);
 	        assertTrue(PetService.createPet(pet)); // Assuming large prices are allowed
 	    }
 
 	    @Test
 	    public void testCreatePetDatabaseError() throws ServiceException {
 	        // Simulate a database error by passing invalid DB credentials
-	        Pet pet = new Pet("Milo", 60, "Vaccinated");
+	        Pet pet = new Pet("Milo", null, null, null, null, null, "60", "Vaccinated", null);
+	        	
 	        assertFalse(PetService.createPet(pet));
 	    }
 	

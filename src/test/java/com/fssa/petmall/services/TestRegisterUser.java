@@ -10,19 +10,13 @@ import com.fssa.petmall.services.exception.ServiceException;
 
 public class TestRegisterUser {
 
-    	public static void main(String[] args) {
-    
-    		 User user1 = new User("saran","selvaraj","Male" ,"9500320194","2004-12-26", "Hacker4@gmail.com","Kottnn@123");
-    		 UserService userService = new UserService();
-    		 System.out.println("Registration not successful! Error : Validation Failed Or User Already Exist");
-    
-    	}
+    	
 		private User user1; 
     
     	@Test
     	public void testRegistrationSuccess() {
     		 UserService userService = new UserService();
-    		 User user1 = new User("Kotti_784","kottiyan","Male" ,"9500320194","2004-12-26", "Ajmal@gmail.com","Kotie@123");
+    		 User user1 = new User("Saran","Selvaraj","Male" ,"9500320194","2004-12-26", "Ajmal@gmail.com","Kotie@123");
     		 try {
     
     		 assertTrue(UserService.registerUser(user1));
@@ -57,7 +51,7 @@ public class TestRegisterUser {
     	        try {
     	            assertTrue(UserService.registerUser(user));
     	        } catch (ServiceException e) {
-    	            fail("Exception thrown: " + e.getMessage());
+    	            	fail("Exception thrown: " + e.getMessage());
     	        }
     	    }
 

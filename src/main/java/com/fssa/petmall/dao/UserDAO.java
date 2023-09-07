@@ -89,15 +89,19 @@ public class UserDAO {
 	}
 	
 	// update user
-	public boolean Update(User user , int userID) throws SQLException {
+	public boolean Update(User user , String email) throws SQLException {
 		   
 		   Connection connection = Utills.getConnection();
 		   
-		   String selectQuery = "UPDATE user_details SET gender = ?, Phone_number = ?, date_of_birth = ? WHERE userID = " + userID + ";";
+		   String selectQuery = "UPDATE user_details SET  First_name = ?, Last_name = ?,Date_of_birth = ?,Gender = ?,Phone_number = ? WHERE email = ?;";
 		   PreparedStatement pst = connection.prepareStatement(selectQuery);
-		   pst.setString(1, user.getGender());
-		   pst.setString(2, user.getPhone_number());
+		  
+		   pst.setString(1, user.getfirst_name());
+		   pst.setString(2, user.getlast_name());
 		   pst.setString(3, user.getDate_of_birth());
+		   pst.setString(4, user.getGender());
+		   pst.setString(5, user.getPhone_number());
+		   pst.setString(6,email);
 		   
 		 //Execute query
 			int rows = pst.executeUpdate();
@@ -108,15 +112,16 @@ public class UserDAO {
 	
 	//delete user
 	// update user
-	public boolean Delete(int userID , int is_deleted) throws SQLException {
+	public boolean Delete( String email) throws SQLException {
 		   
 		   Connection connection = Utills.getConnection();
 		   
-		   String is_delete = Integer.toString(is_deleted);
 		   
-		   String selectQuery = "UPDATE user_details SET is_deleted = ? WHERE userID = " + userID + ";";
+		   
+		   String selectQuery = "UPDATE user_details SET is_deleted = ? WHERE Email = ? ;";
 		   PreparedStatement pst = connection.prepareStatement(selectQuery);
-		   pst.setString(1, is_delete);
+		   pst.setInt(1, 1);
+		   pst.setString(2, email);
 		   
 		 //Execute query
 			int rows = pst.executeUpdate();

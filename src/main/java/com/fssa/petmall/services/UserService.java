@@ -30,10 +30,10 @@ public class UserService {
 	}
 	
 	//update user
-	public static boolean UpdateUser(User user , int userID) throws ServiceException {
+	public static boolean UpdateUser(User user , String email) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 		try {
-			if(userDAO.Update(user , userID)) {
+			if(userDAO.Update(user , email)) {
 				System.out.println("User Details Successfully Updated!");
 				return true;
 			} else {
@@ -46,10 +46,10 @@ public class UserService {
 	
 	
 	//delete user
-	public static boolean DeleteUser(int userID,int is_Deleted) throws ServiceException {
+	public static boolean DeleteUser(String email) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 		try {
-			if(userDAO.Delete(userID,is_Deleted)) {
+			if(userDAO.Delete(email)) {
 				System.out.println("User Details Successfully Deleted!");
 				return true;
 			} else {

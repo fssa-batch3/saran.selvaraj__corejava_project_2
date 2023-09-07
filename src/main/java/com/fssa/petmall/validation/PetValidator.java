@@ -20,11 +20,11 @@ public class PetValidator {
 		}
 		return match;
 	}
-	public static boolean validatePetPrice(int price) {
+	public static boolean validatePetPrice(String string) {
 		boolean match = false;
 		try {
 			
-			if (price > 0) {
+			if (string != null) {
 				match = true;
 				System.out.println("The Pet Price is valid.");
 			} else {

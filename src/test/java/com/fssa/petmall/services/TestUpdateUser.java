@@ -17,18 +17,18 @@ public class TestUpdateUser {
 	
 	@Test
 	public void testUpdateSuccess() throws ServiceException {
-		User user1 = new User("Male","9566848434","2004-12-21");
-		int userID = 2;
+		User user1 = new User("saran2112@gmail.com","9566848434","2004-12-21", null, null);
+		String email = "saran@gmal.com";
 		UserService userService = new UserService();
-		assertTrue(userService.UpdateUser(user1 , userID));
+		assertTrue(userService.UpdateUser(user1 , email));
 	}
 	
 	@Test
 	public void testUpdateFail() throws ServiceException {
-		User user1 = new User("Female","9566848434","2004-12-21");
-		int userID = 5;
+		User user1 = new User("Female","9566848434","2004-12-21", null, null);
+		String email = "saran@gmal.com";
 		UserService userService = new UserService();
-		assertFalse(userService.UpdateUser(user1 , userID));
+		assertFalse(userService.UpdateUser(user1 , email));
 	}
 
     private static class UserDAOSimulated extends UserDAO {
@@ -39,22 +39,22 @@ public class TestUpdateUser {
         }
 
         @Override
-        public boolean Update(User user, int userID) throws SQLException {
+        public boolean Update(User user, String email) throws SQLException {
             return shouldUpdateSucceed;
         }
     }
 
     @Test
     public void testUpdateSuccessful() {
-    	User user1 = new User("Female","9566848434","2004-12-21");
-		int userID = 2;
+    	User user1 = new User("Female","9566848434","2004-12-21", null, null);
+    	String email = "saran@gmal.com";
         try {
             UserDAOSimulated userDAOSimulated = new UserDAOSimulated(true);
 
             UserService userService = new UserService();
             userService.LoginUser(user1);
 
-            boolean result = userService.UpdateUser(user1, userID); // Use a valid userID
+            boolean result = userService.UpdateUser(user1, email); // Use a valid userID
 
             assertTrue(result, "Update should be successful");
         } catch (ServiceException e) {
@@ -64,15 +64,15 @@ public class TestUpdateUser {
 
     @Test
     public void testUpdateUnsuccessful() {
-    	User user1 = new User("Female","9566848434","2004-12-21");
-		int userID = 2;
+    	User user1 = new User("Female","9566848434","2004-12-21", null, null);
+    	String email = "saran@gmal.com";
         try {
             UserDAOSimulated userDAOSimulated = new UserDAOSimulated(false);
 
             UserService userService = new UserService();
             userService.LoginUser(user1);
 
-            boolean result = userService.UpdateUser(user1, userID); // Use a valid userID
+            boolean result = userService.UpdateUser(user1, email); // Use a valid userID
 
             assertFalse(result, "Update should be unsuccessful");
         } catch (ServiceException e) {
@@ -82,15 +82,15 @@ public class TestUpdateUser {
 
     @Test
     public void testUpdateException() {
-    	User user1 = new User("Female","9566848434","2004-12-21");
-		int userID = 2;
+    	User user1 = new User("Female","9566848434","2004-12-21", null, null);
+    	String email = "saran@gmal.com";
         try {
             UserDAOSimulated userDAOSimulated = new UserDAOSimulated(false);
 
             UserService userService = new UserService();
             userService.LoginUser(user1);
 
-            assertThrows(ServiceException.class, () -> userService.UpdateUser(user1, userID), "ServiceException should be thrown");
+            assertThrows(ServiceException.class, () -> userService.UpdateUser(user1, email), "ServiceException should be thrown");
         } catch (ServiceException e) {
             fail("SQL Exception thrown: " + e.getMessage());
         }

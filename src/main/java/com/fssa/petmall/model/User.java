@@ -11,6 +11,7 @@ public class User {
 	private String date_of_birth;
 	public String email;
 	public String password;
+	public int is_deleted;
 	
 	
 	//register
@@ -26,13 +27,28 @@ public class User {
 		this.password = password;
 		
 	}
-	
-	//update
-	public User(String gender, String Phone_number , String date_of_birth) {
+	public User(String first_name,String last_name, String gender , String Phone_number , String date_of_birth) {
 		super();
+		this.userID = userID;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.gender = gender;
 		this.Phone_number = Phone_number;
 		this.date_of_birth = date_of_birth;
+		this.email = email;
+		this.is_deleted = is_deleted;
+	}
+	//update
+	public User(int userID,String first_name,String last_name, String gender , String Phone_number , String date_of_birth,String email,int is_deleted) {
+		super();
+		this.userID = userID;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.gender = gender;
+		this.Phone_number = Phone_number;
+		this.date_of_birth = date_of_birth;
+		this.email = email;
+		this.is_deleted = is_deleted;
 	}
 	
 	//delete
@@ -52,6 +68,12 @@ public class User {
 		return "UserID: " + userID + "First_name: " + first_name +"last_name"+last_name+ "gender: " + gender + "Phone_number: " + Phone_number + "date_of_birth: " + date_of_birth + "Email: " + email + " Password: " + password;
 	}
 
+	public int getIsDeleted() {
+		return is_deleted;
+	}
+	public void setIsDeleted(int is_deleted) {
+		this.is_deleted = is_deleted;
+	}
 	public int getUserID() {
 		return userID;
 	}
