@@ -13,6 +13,7 @@ public class Pet {
     private static String price;
     private static String mobileNumber;
     private static String vaccinationCertificate;
+    private static String soldUserEmail;
 
     public Pet( String petimageurl,String realName, String personalName, String dob, String specialTalent, String behavior, String price, String mobileNumber, String vaccinationCertificate) {
         this.petimageurl=petimageurl;
@@ -39,11 +40,31 @@ public class Pet {
         this.mobileNumber = mobileNumber;
         this.vaccinationCertificate = vaccinationCertificate;
 	}
-
+    public Pet(String uniqueID, String realName, String price, String petimageurl, String personalName, String dob,
+			String specialTalent, String behavior, String mobileNumber, String vaccinationCertificate,String soldUserEmail) {
+    	this.uniqueID = uniqueID;
+		this.petimageurl=petimageurl;
+        this.realName = realName;
+        this.personalName = personalName;
+        this.dob = dob;
+        this.specialTalent = specialTalent;
+        this.behavior = behavior;
+        this.price = price;
+        this.mobileNumber = mobileNumber;
+        this.vaccinationCertificate = vaccinationCertificate;
+        this.soldUserEmail=soldUserEmail;
+	}
+    
+    public static String getsoldUserEmail() {
+    	return soldUserEmail;
+    }
+    public void  setsoldUserEmail(String soldUserEmail) {
+    	this.soldUserEmail = soldUserEmail;
+    }
     public static String getuniqueID() {
     	return uniqueID;
     }
-    public void  setuniqueID() {
+    public void  setuniqueID(String uniqueID) {
     	this.uniqueID = uniqueID;
     }
 	public static String getpetimageurl() {

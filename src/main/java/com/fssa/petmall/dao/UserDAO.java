@@ -37,6 +37,8 @@ public class UserDAO {
 			   match = true;
 		   }
 	   }
+	   resultSet.close();
+	   connection.close();
 	   return match;
 	}
    
@@ -61,6 +63,8 @@ public class UserDAO {
 			   match = true;
 		   }
 	   }
+	   resultSet.close();
+	   connection.close();
 	   return match;
 	}
    
@@ -83,6 +87,8 @@ public class UserDAO {
 		pst.setString(7, user.getPassword());
 		//Execute query
 		int rows = pst.executeUpdate();
+		    pst.close();
+		   connection.close();
 		
 		//Return Successful or not
 		return (rows == 1);
@@ -105,7 +111,8 @@ public class UserDAO {
 		   
 		 //Execute query
 			int rows = pst.executeUpdate();
-			
+			pst.close();
+			connection.close();
 			//Return Successful or not
 			return (rows == 1);
 }
@@ -125,7 +132,8 @@ public class UserDAO {
 		   
 		 //Execute query
 			int rows = pst.executeUpdate();
-			
+			pst.close();
+			connection.close();
 			//Return Successful or not
 			return (rows == 1);
 }

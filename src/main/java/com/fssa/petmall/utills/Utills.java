@@ -14,14 +14,11 @@ public class Utills {
 		final String DB_USER;
 		final String DB_PASSWORD;
 
-//        DB_URL = System.getenv("DB_URL");
-//        DB_USER = System.getenv("DB_USER");
-//        DB_PASSWORD = System.getenv("DB_PASSWORD");
+        DB_URL = System.getenv("DB_URL");
+        DB_USER = System.getenv("DB_USER");
+        DB_PASSWORD = System.getenv("DB_PASSWORD");
 
-		DB_URL = "jdbc:mysql://164.52.216.41:3306/saran_selvaraj_corejava_project";
-		DB_USER = "rRqHG0uqmF9q";
-		DB_PASSWORD = "d69f66e8-45f3-48ed-8868-f2ddd5320b5d";
-        
+		
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -33,5 +30,7 @@ public class Utills {
 			e.printStackTrace();
 			throw new RuntimeException("Database Driver class Not found", e);
 		}
+		
+		
 	}
 }

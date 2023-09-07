@@ -34,6 +34,7 @@ public class PetDAO {
 	            pst.setString(9, pet.getpetimageurl());
 
 	            int rowsInserted = pst.executeUpdate();
+	            connection.close();
 	            return rowsInserted > 0;
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -55,9 +56,11 @@ public class PetDAO {
 	            pst.setString(8, pet.getVaccinationCertificate());
 
 	            int rowsInserted = pst.executeUpdate();
+	            connection.close();
 	            return rowsInserted > 0;
 	        } catch (SQLException e) {
 	            e.printStackTrace();
+	            
 	            return false;
 	        }
 	    }
@@ -70,6 +73,8 @@ public class PetDAO {
 			pst.setInt(1,isNotBought);
 			
 			int rows = pst.executeUpdate();
+			pst.close();
+			connection.close();
 			return (rows == 1);
 		}
 		
@@ -103,6 +108,7 @@ public class PetDAO {
 		        } catch (SQLException e) {
 		            throw new DAOException(PetModuleConstants.READ_ERROR_MESSAGE + e);
 		        }
+		    
 		        return list1;
 		    }
 		
