@@ -16,11 +16,10 @@ import com.fssa.petmall.utills.*;
 public class PetDAO {
 
 	   
-		//connect to database
-	    Utills utills = new Utills();
-        Logger Logger = new Logger();
+		
+        
 	    public boolean createPet(Pet pet) {
-	        String insertQuery = "INSERT INTO pet_details (realName, personalName, dob, specialTalent, behavior, price, mobileNumber, vaccinationCertificate,image) VALUES (?, ?, ?, ?, ? , ?, ?, ?, ?)";
+	        String insertQuery = "INSERT INTO pet_details (realName, personalName, dob, specialTalent, behavior, price, mobileNumber, vaccinationCertificate,image,soldUserEmail) VALUES (?, ?, ?, ?, ? , ?, ?, ?, ?)";
 	        Connection connection = Utills.getConnection();
 	        try (PreparedStatement pst = connection.prepareStatement(insertQuery)) {
 	            pst.setString(1, Pet.getRealName());
@@ -32,6 +31,7 @@ public class PetDAO {
 	            pst.setString(7, Pet.getMobileNumber());
 	            pst.setString(8, Pet.getVaccinationCertificate());
 	            pst.setString(9, Pet.getpetimageurl());
+	            pst.setString(10,Pet.getsoldUserEmail());
 
 	            int rowsInserted = pst.executeUpdate();
 	            connection.close();

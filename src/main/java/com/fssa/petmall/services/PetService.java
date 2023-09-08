@@ -17,7 +17,7 @@ public class PetService {
 	
 	public static boolean createPet(Pet pet) {
 		PetDAO petDAO = new PetDAO();
-		Pet pet1 = new Pet(Pet.getpetimageurl(),Pet.getRealName(),Pet.getPersonalName(),pet.getDob(), pet.getSpecialTalent(), pet.getBehavior(), Pet.getPrice(),pet.getMobileNumber(), Pet.getVaccinationCertificate());
+		Pet pet1 = new Pet(Pet.getpetimageurl(),Pet.getRealName(),Pet.getPersonalName(),Pet.getDob(), Pet.getSpecialTalent(), Pet.getBehavior(), Pet.getPrice(),Pet.getMobileNumber(), Pet.getVaccinationCertificate(),Pet.getsoldUserEmail());
 		if(PetValidator.validatePetName(Pet.getRealName()) && PetValidator.validatePetPrice(Pet.getPrice())){ 
 			if(petDAO.createPet(pet1)) {
 				Logger.debug((Pet.getRealName() + " Successfully Registered!"));

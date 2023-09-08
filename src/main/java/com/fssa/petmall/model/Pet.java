@@ -28,7 +28,7 @@ public class Pet {
     }
 
     public Pet(String uniqueID, String realName, String price, String petimageurl, String personalName, String dob,
-			String specialTalent, String behavior, String mobileNumber, String vaccinationCertificate) {
+			String specialTalent, String behavior, String mobileNumber, String vaccinationCertificate,String soldUserEmail) {
     	Pet.uniqueID = uniqueID;
     	Pet.petimageurl=petimageurl;
     	Pet.realName = realName;
@@ -39,10 +39,11 @@ public class Pet {
         Pet.price = price;
         Pet.mobileNumber = mobileNumber;
         Pet.vaccinationCertificate = vaccinationCertificate;
+        Pet.soldUserEmail = soldUserEmail;
 	}
-    public Pet(String uniqueID, String realName, String price, String petimageurl, String personalName, String dob,
+    public Pet( String realName, String price, String petimageurl, String personalName, String dob,
 			String specialTalent, String behavior, String mobileNumber, String vaccinationCertificate,String soldUserEmail) {
-    	Pet.uniqueID = uniqueID;
+    	
     	Pet.petimageurl=petimageurl;
     	Pet.realName = realName;
     	Pet.personalName = personalName;
