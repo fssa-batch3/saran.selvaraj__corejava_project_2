@@ -16,8 +16,8 @@ public class User {
 	
 	//register
 	public User(String firstname,String lastname, String gender , String Phonenumber , String dateofbirth, String email, String password) {
-		super();
-		this.userID = userID;
+		
+		
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.gender = gender;
@@ -28,26 +28,24 @@ public class User {
 		
 	}
 	public User(String firstname,String lastname, String gender , String Phonenumber , String dateofbirth) {
-		super();
-		this.userID = userID;
+		
+		
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.gender = gender;
 		this.Phonenumber = Phonenumber;
 		this.dateofbirth = dateofbirth;
-		this.email = email;
-		this.isdeleted = isdeleted;
+		
 	}
 	//update
-	public User(int userID,String firstname,String lastname, String gender , String Phonenumber , String dateofbirth,String email,int isdeleted) {
-		super();
+	public User(int userID,String firstname,String lastname, String gender , String Phonenumber , String dateofbirth,int isdeleted) {
+		
 		this.userID = userID;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.gender = gender;
 		this.Phonenumber = Phonenumber;
 		this.dateofbirth = dateofbirth;
-		this.email = email;
 		this.isdeleted = isdeleted;
 	}
 	

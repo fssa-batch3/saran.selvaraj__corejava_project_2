@@ -16,16 +16,14 @@ class TestDeleteUser {
 	void TestDeleteSuccess() throws ServiceException {
 		
 		String email = "saran@gmail.com";
-		UserService userService = new UserService();
-        assertTrue(userService.deleteUser(email));
+        assertTrue(UserService.deleteUser(email));
 	}
 	
 	@Test
 	void TestDeleteFail() throws ServiceException {
 		
 		String email = "saran2005@gmail.com";
-		UserService userService = new UserService();
-        assertFalse(userService.deleteUser(email));
+        assertFalse(UserService.deleteUser(email));
 	}
 	
 	

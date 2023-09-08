@@ -1,11 +1,8 @@
 package TestUserAttributes;
 
-import java.sql.SQLException;
-import java.util.regex.*;
+import com.fssa.petmall.utills.*;
 import org.junit.jupiter.api.Test;
-import com.fssa.petmall.model.User;
 import com.fssa.petmall.services.UserService;
-import com.fssa.petmall.validation.exception.InvalidUserException;
 import com.google.protobuf.ServiceException;
 import com.fssa.petmall.validation.UserValidator;
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,9 +16,9 @@ class TestValidateFName {
 	void TestNameSuccess() throws ServiceException {	
 		    String name ="saran";
 			try {
-				assertTrue(validator.validateName(name));
+				assertTrue(UserValidator.validateName(name));
 			} catch (Exception e) {
-				System.out.println("UserName Invalid");
+				Logger.debug("UserName Invalid");
 				fail();
 			}
 	} 
@@ -30,9 +27,9 @@ class TestValidateFName {
 	void TestNameFailure() throws ServiceException {	
 		    String name = null;
 			try {		
-				assertFalse(validator.validateName(name));
+				assertFalse(UserValidator.validateName(name));
 			} catch (Exception e) {
-				System.out.println("UserName Invalid");
+				Logger.debug("UserName Invalid");
 				fail(); 
 			}
 	} 

@@ -2,6 +2,7 @@ package com.fssa.petmall.services;
 
 import java.sql.SQLException;
 
+
 import java.util.List;
 
 import com.fssa.petmall.dao.PetDAO;
@@ -10,7 +11,7 @@ import com.fssa.petmall.model.*;
 
 import com.fssa.petmall.services.exception.ServiceException;
 import com.fssa.petmall.validation.PetValidator;
-
+import com.fssa.petmall.utills.*;
 
 public class PetService {
 	
@@ -19,7 +20,7 @@ public class PetService {
 		Pet pet1 = new Pet(Pet.getpetimageurl(),Pet.getRealName(),Pet.getPersonalName(),pet.getDob(), pet.getSpecialTalent(), pet.getBehavior(), Pet.getPrice(),pet.getMobileNumber(), Pet.getVaccinationCertificate());
 		if(PetValidator.validatePetName(Pet.getRealName()) && PetValidator.validatePetPrice(Pet.getPrice())){ 
 			if(petDAO.createPet(pet1)) {
-				System.out.println(Pet.getRealName() + " Successfully Registered!");
+				Logger.debug((Pet.getRealName() + " Successfully Registered!"));
 				return true;
 			} else {
 				return false;
@@ -28,10 +29,10 @@ public class PetService {
 			return false;
 		}
 	}
-	public List<Pet> listCourse(int userID) throws ServiceException {
+	public List<Pet> listAllPets(String email) throws ServiceException {
 		PetDAO courseDAO = new PetDAO();
 		try {
-			return courseDAO.readCourse(userID);
+			return courseDAO.listAllPets(email);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
@@ -49,7 +50,7 @@ public class PetService {
 	public static boolean updatePet(Pet pet) throws ServiceException {
 		PetDAO petDAO = new PetDAO();
 		if(petDAO.updatePet(pet)) {
-			System.out.println("User Details Successfully Updated!");
+			Logger.debug("User Details Successfully Updated!");
 			return true;
 		} else {
 			return false;
@@ -62,7 +63,7 @@ public class PetService {
 		PetDAO petDAO = new PetDAO();
 		try {
 			if(petDAO.deletePet( uniqueID,isNotBought)) {
-				System.out.println("User Details Successfully Deleted!");
+				Logger.debug("User Details Successfully Deleted!");
 				return true;
 			} else {
 				return false;

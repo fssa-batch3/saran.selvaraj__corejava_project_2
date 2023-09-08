@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.fssa.petmall.model.User;
-import com.fssa.petmall.utills.Utills;
+import com.fssa.petmall.utills.*;
 
 public class UserDAO {
 
-	
+	Logger Logger = new Logger();
 	 //connect to database
 //	Utils utils = new Utils();
 	boolean match = false;
@@ -31,7 +31,7 @@ public class UserDAO {
 		   String emailID = resultSet.getString("email");
 		   String password = resultSet.getString("password");
 		   
-		   System.out.println("Email: " + emailID + " Password: " + password);
+		   Logger.debug("Email: " + emailID + " Password: " + password);
 		   
 		   if(user.getEmail().equals(emailID) && user.getPassword().equals(password)) {
 			   match = true;
@@ -57,7 +57,7 @@ public class UserDAO {
 		   String emailID = resultSet.getString("email");
 		   String password = resultSet.getString("password");
 		   
-		   System.out.println("Email: " + emailID + " Password: " + password);
+		   Logger.debug("Email: " + emailID + " Password: " + password);
 		   
 		   if(user.getEmail().equals(emailID)) {
 			   match = true;
@@ -99,7 +99,7 @@ public class UserDAO {
 		   
 		   Connection connection = Utills.getConnection();
 		   
-		   String selectQuery = "UPDATE user_details SET  First_name = ?, Last_name = ?,Date_of_birth = ?,Gender = ?,Phone_number = ? WHERE email = ?;";
+		   String selectQuery = "UPDATE user_details SET First_name = ?, Last_name = ?,Date_of_birth = ?,Gender = ?,Phone_number = ? WHERE email = ?;";
 		   PreparedStatement pst = connection.prepareStatement(selectQuery);
 		  
 		   pst.setString(1, user.getfirst_name());
@@ -118,7 +118,6 @@ public class UserDAO {
 }
 	
 	//delete user
-	// update user
 	public boolean delete( String email) throws SQLException {
 		   
 		   Connection connection = Utills.getConnection();

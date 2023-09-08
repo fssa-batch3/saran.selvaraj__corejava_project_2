@@ -11,14 +11,14 @@ import java.util.List;
 import com.fssa.petmall.constants.PetModuleConstants;
 import com.fssa.petmall.dao.exception.DAOException;
 import com.fssa.petmall.model.Pet;
-import com.fssa.petmall.utills.Utills;
+import com.fssa.petmall.utills.*;
 
 public class PetDAO {
 
-	 
+	   
 		//connect to database
 	    Utills utills = new Utills();
-
+        Logger Logger = new Logger();
 	    public boolean createPet(Pet pet) {
 	        String insertQuery = "INSERT INTO pet_details (realName, personalName, dob, specialTalent, behavior, price, mobileNumber, vaccinationCertificate,image) VALUES (?, ?, ?, ?, ? , ?, ?, ?, ?)";
 	        Connection connection = Utills.getConnection();
@@ -37,7 +37,7 @@ public class PetDAO {
 	            connection.close();
 	            return rowsInserted > 0;
 	        } catch (SQLException e) {
-	            e.printStackTrace();
+	        	Logger.error(e);
 	            return false;
 	        }
 	    }
@@ -59,7 +59,7 @@ public class PetDAO {
 	            connection.close();
 	            return rowsInserted > 0;
 	        } catch (SQLException e) {
-	            e.printStackTrace();
+	        	Logger.error(e);
 	            
 	            return false;
 	        }
@@ -78,7 +78,7 @@ public class PetDAO {
 			return (rows == 1);
 		}
 		
-		public List<Pet> readCourse(int isNotBought) throws DAOException {
+		public List<Pet> listAllPets(String email) throws DAOException {
 		    List<Pet> list1 = new ArrayList<>();
 		    
 		    try (Connection connection = Utills.getConnection();

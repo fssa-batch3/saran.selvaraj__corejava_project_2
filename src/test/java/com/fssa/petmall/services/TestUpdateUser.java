@@ -1,6 +1,7 @@
 package com.fssa.petmall.services;
 
 import static org.junit.Assert.fail;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,17 +19,17 @@ class TestUpdateUser {
 	@Test
 	void testUpdateSuccess() throws ServiceException {
 		User user1 = new User("saran2112@gmail.com","9566848434","2004-12-21", null, null);
-		String email = "saran@gmal.com";
-		UserService userService = new UserService();
-		assertTrue(userService.updateUser(user1 , email));
+		String email = "saran@gmail.com";
+		
+		assertTrue(UserService.updateUser(user1 , email));
 	}
 	
 	@Test
 	void testUpdateFail() throws ServiceException {
 		User user1 = new User("Female","9566848434","2004-12-21", null, null);
 		String email = "saran@gmal.com";
-		UserService userService = new UserService();
-		assertFalse(userService.updateUser(user1 , email));
+		
+		assertFalse(UserService.updateUser(user1 , email));
 	}
 
     private static class UserDAOSimulated extends UserDAO {
@@ -49,12 +50,10 @@ class TestUpdateUser {
     	User user1 = new User("Female","9566848434","2004-12-21", null, null);
     	String email = "saran@gmal.com";
         try {
-            UserDAOSimulated userDAOSimulated = new UserDAOSimulated(true);
+            
+            UserService.loginUser(user1);
 
-            UserService userService = new UserService();
-            userService.loginUser(user1);
-
-            boolean result = userService.updateUser(user1, email); // Use a valid userID
+            boolean result = UserService.updateUser(user1, email); // Use a valid userID
 
             assertTrue(result, "Update should be successful");
         } catch (ServiceException e) {
@@ -67,12 +66,10 @@ class TestUpdateUser {
     	User user1 = new User("Female","9566848434","2004-12-21", null, null);
     	String email = "saran@gmal.com";
         try {
-            UserDAOSimulated userDAOSimulated = new UserDAOSimulated(false);
+           
+            UserService.loginUser(user1);
 
-            UserService userService = new UserService();
-            userService.loginUser(user1);
-
-            boolean result = userService.updateUser(user1, email); // Use a valid userID
+            boolean result = UserService.updateUser(user1, email); // Use a valid userID
 
             assertFalse(result, "Update should be unsuccessful");
         } catch (ServiceException e) {
@@ -87,10 +84,10 @@ class TestUpdateUser {
         try {
             UserDAOSimulated userDAOSimulated = new UserDAOSimulated(false);
 
-            UserService userService = new UserService();
-            userService.loginUser(user1);
+            
+            UserService.loginUser(user1);
 
-            assertThrows(ServiceException.class, () -> userService.updateUser(user1, email), "ServiceException should be thrown");
+            assertThrows(ServiceException.class, () -> UserService.updateUser(user1, email), "ServiceException should be thrown");
         } catch (ServiceException e) {
             fail("SQL Exception thrown: " + e.getMessage());
         }

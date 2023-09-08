@@ -1,6 +1,7 @@
 package com.fssa.petmall.services;
 import java.sql.SQLException;
 
+import com.fssa.petmall.utills.*;
 import com.fssa.petmall.dao.UserDAO;
 import com.fssa.petmall.model.User;
 import com.fssa.petmall.services.exception.ServiceException;
@@ -16,7 +17,7 @@ public class UserService {
 		try {
 		if(UserValidator.validateUser(user) && !userDAO.emailExist(user1)) { 
 			if(userDAO.register(user)) {
-				System.out.println(user.getfirst_name() + " Successfully Registered!");
+				Logger.debug((user.getfirst_name() + " Successfully Registered!"));
 				return true;
 			} else {
 				return false;
@@ -34,7 +35,7 @@ public class UserService {
 		UserDAO userDAO = new UserDAO();
 		try {
 			if(userDAO.update(user , email)) {
-				System.out.println("User Details Successfully Updated!");
+				Logger.debug(("User Details Successfully Updated!"));
 				return true;
 			} else {
 				return false;
@@ -50,7 +51,7 @@ public class UserService {
 		UserDAO userDAO = new UserDAO();
 		try {
 			if(userDAO.delete(email)) {
-				System.out.println("User Details Successfully Deleted!");
+				Logger.debug("User Details Successfully Deleted!");
 				return true;
 			} else {
 				return false;
@@ -65,10 +66,10 @@ public class UserService {
 		UserDAO userDAO = new UserDAO();
 		try {
 			if(userDAO.login(user)) {
-				System.out.println("\n" + user.email + " Login Successful!");
+				Logger.debug("\n" + user.email + " Login Successful!");
 				return true;
 			} else {
-				System.out.println("\n" + " Login Not Successful! ReCheck Your Credentials");
+				Logger.debug("\n" + " Login Not Successful! ReCheck Your Credentials");
 				return false;
 			}
 		} catch (SQLException e) {

@@ -4,6 +4,7 @@ package TestUserAttributes;
 
 
 import org.junit.jupiter.api.Test;
+import com.fssa.petmall.utills.*;
 import com.fssa.petmall.services.UserService;
 import com.google.protobuf.ServiceException;
 import com.fssa.petmall.validation.UserValidator;
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 			try {
 				assertTrue(UserValidator.validateEmail(Email));
 			} catch (Exception e) {
-				System.out.println("UserName Invalid");
+				Logger.debug("UserName Invalid");
 				fail();
 			}
 	} 
@@ -31,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.*;
 			try {		
 				assertFalse(UserValidator.validateEmail(Email));
 			} catch (Exception e) {
-				System.out.println("UserName Invalid");
+				Logger.debug("UserName Invalid");
 				fail(); 
 			}
 	} 

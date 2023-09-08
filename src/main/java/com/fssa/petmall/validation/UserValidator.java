@@ -10,7 +10,7 @@ import com.fssa.petmall.validation.exception.InvalidUserException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import com.fssa.petmall.utills.*;
 public class UserValidator {
 	
 	// if three conditions valid then user valid
@@ -30,9 +30,9 @@ public class UserValidator {
 			String regex = "^[A-Za-z0-9_]{3,30}$";
 			match = Pattern.matches(regex, name);
 			if (match) {
-				System.out.println("The user name is valid.");
+				Logger.debug("The user name is valid.");
 			} else {
-				System.out.println("user name is not valid");
+				Logger.debug("user name is not valid");
 			}
 		} catch (Exception e) {
 			System.out.println("user name is not valid");
@@ -46,12 +46,12 @@ public class UserValidator {
 			String patternstring = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])(?=.*[^\\s]).{8,}$";
 			match = Pattern.matches(patternstring, password);
 			if (match) {
-				System.out.println("Valid password.");
+				Logger.debug("Valid password.");
 			} else {
-				System.out.println("Invalid password.");
+				Logger.debug("Invalid password.");
 			}
 		} catch (PatternSyntaxException e) {
-			System.out.println(e.getMessage());
+			Logger.error(e);
 		}
 
 		return match;
@@ -63,13 +63,13 @@ public class UserValidator {
 			String regex = "^.*@.*\\..*$";
 			isMatch = Pattern.matches(regex, email);
 			if (isMatch) {
-				System.out.println("The email address is: Valid");
+				Logger.debug("The email address is: Valid");
 			} else {
-				System.out.println("The email address is: Invalid");
+				Logger.debug("The email address is: Invalid");
 			}
 			return isMatch;
 		} catch (PatternSyntaxException e) {
-			System.out.println(e.getMessage());
+			Logger.error(e);
 		}
 		return isMatch;
 		
