@@ -44,11 +44,7 @@
             <version>2.14.1</version> <!-- Use the appropriate version -->
         </dependency>
 
-        <dependency>
-        	<groupId>com.fssa</groupId>
-        	<artifactId>petmall-web</artifactId>
-        	<version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
 	</dependencies>
 
 	<build>

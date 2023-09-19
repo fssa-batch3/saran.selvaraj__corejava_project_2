@@ -1,8 +1,7 @@
 package com.fssa.petmall.services;
 
 import java.sql.SQLException;
-
-
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fssa.petmall.dao.PetDAO;
@@ -29,23 +28,17 @@ public class PetService {
 			return false;
 		}
 	}
-	public List<Pet> listAllPets(String email) throws ServiceException {
-		PetDAO courseDAO = new PetDAO();
+	public static List<Pet> listAllPets() throws ServiceException {
+		List<Pet> list = null;
 		try {
-			return courseDAO.listAllPets(email);
+			list = PetDAO.listAllPets();
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
+		return list;
 	}
 	
-	public List<Pet> getAllPet() throws ServiceException {
-		PetDAO petDAO = new PetDAO();
-		try {
-			return petDAO.getAllCourse();
-		} catch (DAOException e) {
-			throw new ServiceException(e);
-		}
-	}
+	
 	//update user
 	public static boolean updatePet(Pet pet) throws ServiceException {
 		PetDAO petDAO = new PetDAO();

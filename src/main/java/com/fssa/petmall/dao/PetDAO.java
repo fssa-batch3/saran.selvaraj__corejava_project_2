@@ -78,8 +78,8 @@ public class PetDAO {
 			return (rows == 1);
 		}
 		
-		public List<Pet> listAllPets(String email) throws DAOException {
-		    List<Pet> list1 = new ArrayList<>();
+		public static List<Pet> listAllPets() throws DAOException {
+		    List<Pet> list = new ArrayList<>();
 		    
 		    try (Connection connection = Utills.getConnection();
 		         PreparedStatement pst = connection.prepareStatement("SELECT * FROM pet_details WHERE isNotBought = 0;")) {
@@ -89,7 +89,7 @@ public class PetDAO {
 		            while (resultSet.next()) {
 		            int id = resultSet.getInt("uniqueID");
 		            String uniqueID = String.valueOf(id);
-					String petimageurl = resultSet.getString("petimageurl");
+					String petimageurl = resultSet.getString("image");
 					String realName = resultSet.getString("realName");
 					String personalName = resultSet.getString("personalName");
 					String dob = resultSet.getString("dob");
@@ -98,10 +98,11 @@ public class PetDAO {
 					String price = resultSet.getString("price");
 					String mobileNumber = resultSet.getString("mobileNumber");
 					String vaccinationCertificate = resultSet.getString("vaccinationCertificate");
+					String soldUserEmail = resultSet.getString("soldUserEmail");
 					
 	                
-					Pet pet = new Pet(uniqueID, petimageurl, realName, personalName, dob, specialTalent, behavior, price, mobileNumber, vaccinationCertificate);
-					list1.add(pet);
+					Pet pet = new Pet(uniqueID,  realName, price,petimageurl,personalName, dob, specialTalent, behavior,  mobileNumber, vaccinationCertificate,soldUserEmail);
+					list.add(pet);
 
 				 }
 		       }
@@ -109,37 +110,7 @@ public class PetDAO {
 		            throw new DAOException(PetModuleConstants.READ_ERROR_MESSAGE + e);
 		        }
 		    
-		        return list1;
-		    }
-		
-		public List<Pet> getAllCourse() throws DAOException {
-		    List<Pet> list1 = new ArrayList<>();
-		    try (Connection connection = Utills.getConnection();
-		         PreparedStatement pst = connection.prepareStatement("SELECT * FROM course WHERE is_deleted = 0")) {
-		        try (ResultSet resultSet = pst.executeQuery()) {
-		            
-		            while (resultSet.next()) {
-		            	int id = resultSet.getInt("uniqueID");
-			            String uniqueID = String.valueOf(id);
-						String petimageurl = resultSet.getString("petimageurl");
-						String realName = resultSet.getString("realName");
-						String personalName = resultSet.getString("personalName");
-						String dob = resultSet.getString("dob");
-						String specialTalent = resultSet.getString("specialTalent");
-						String behavior = resultSet.getString("behavior");
-						String price = resultSet.getString("price");
-						String mobileNumber = resultSet.getString("mobileNumber");
-						String vaccinationCertificate = resultSet.getString("vaccinationCertificate");
-	                
-					Pet pet = new Pet(uniqueID, petimageurl, realName, personalName, dob, specialTalent, behavior, price, mobileNumber, vaccinationCertificate);
-					list1.add(pet);
-
-				 }
-		       }
-		        } catch (SQLException e) {
-		            throw new DAOException(PetModuleConstants.READ_ERROR_MESSAGE + e);
-		        }
-		        return list1;
+		        return list;
 		    }
 		
 }
