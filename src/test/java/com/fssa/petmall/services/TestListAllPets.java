@@ -2,6 +2,7 @@ package com.fssa.petmall.services;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import com.fssa.petmall.model.Pet;
@@ -12,13 +13,13 @@ class TestListAllPets {
 
 	@Test
 	void listAllpets() throws ServiceException{
-		assertDoesNotThrow(() -> { 
-			List<Pet> list = new PetService().listAllPets();
-			for(Pet item : list) {
-				String realName = item.getpetimageurl();
-				System.out.println(realName);
-			}
-			
+		assertDoesNotThrow(() -> {
+		
+			PetService PetService = new PetService();
+			List<Pet> list = PetService.listAllPets();
+				System.out.println(list.get(0).getDob());
+
+
 		});
 	}
 }

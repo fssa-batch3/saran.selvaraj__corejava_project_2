@@ -1,9 +1,10 @@
 package com.fssa.petmall.model;
 
-
 public class User {
 
 	private int userID;
+
+
 	private String firstname;
 	public String lastname;
 	private String gender;
@@ -12,12 +13,12 @@ public class User {
 	public String email;
 	public String password;
 	public int isdeleted;
-	
-	
+
+
 	//register
 	public User(String firstname,String lastname, String gender , String Phonenumber , String dateofbirth, String email, String password) {
-		
-		
+
+
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.gender = gender;
@@ -25,21 +26,21 @@ public class User {
 		this.dateofbirth = dateofbirth;
 		this.email = email;
 		this.password = password;
-		
+
 	}
 	public User(String firstname,String lastname, String gender , String Phonenumber , String dateofbirth) {
-		
-		
+
+
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.gender = gender;
 		this.Phonenumber = Phonenumber;
 		this.dateofbirth = dateofbirth;
-		
+
 	}
 	//update
 	public User(int userID,String firstname,String lastname, String gender , String Phonenumber , String dateofbirth,int isdeleted) {
-		
+
 		this.userID = userID;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -48,20 +49,21 @@ public class User {
 		this.dateofbirth = dateofbirth;
 		this.isdeleted = isdeleted;
 	}
-	
+
 	//delete
 		public User(int userID) {
 			super();
 			this.userID = userID;
 		}
-	
+
 	//login
 	public User(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
-	
+
+	@Override
 	public String toString() {
 		return "UserID: " + userID + "First_name: " + firstname +"last_name"+lastname+ "gender: " + gender + "Phone_number: " + Phonenumber + "date_of_birth: " + dateofbirth + "Email: " + email + " Password: " + password;
 	}
@@ -87,7 +89,7 @@ public class User {
 	public void setfirst_name(String first_name) {
 		this.firstname = first_name;
 	}
-	
+
 	public String getlast_name() {
 		return lastname;
 	}
@@ -135,5 +137,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 }

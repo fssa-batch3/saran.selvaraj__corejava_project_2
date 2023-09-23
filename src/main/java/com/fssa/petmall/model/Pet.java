@@ -3,148 +3,180 @@ package com.fssa.petmall.model;
 
 
 public class Pet {
-	private static String uniqueID;
-	private static String petimageurl;
-	private static String realName;
-    private static String personalName;
-    private static String dob;
-    private static String specialTalent;
-    private static String behavior;
-    private static String price;
-    private static String mobileNumber;
-    private static String vaccinationCertificate;
-    private static String soldUserEmail;
+	private int uniqueID;
+
+	private String petimageurl;
+	private String realName;
+    private String personalName;
+    private String dob;
+    private String specialTalent;
+    private String behavior;
+    private String price;
+    private String mobileNumber;
+    private String vaccinationCertificate;
+    private String soldUserEmail;
 
     public Pet( String petimageurl,String realName, String personalName, String dob, String specialTalent, String behavior, String price, String mobileNumber, String vaccinationCertificate) {
-        Pet.petimageurl=petimageurl;
-        Pet.realName = realName;
-        Pet.personalName = personalName;
-        Pet.dob = dob;
-        Pet.specialTalent = specialTalent;
-        Pet.behavior = behavior;
-        Pet.price = price;
-        Pet.mobileNumber = mobileNumber;
-        Pet.vaccinationCertificate = vaccinationCertificate;
+        this.petimageurl=petimageurl;
+        this.realName = realName;
+        this.personalName = personalName;
+        this.dob = dob;
+        this.specialTalent = specialTalent;
+        this.behavior = behavior;
+        this.price = price;
+        this.mobileNumber = mobileNumber;
+        this.vaccinationCertificate = vaccinationCertificate;
     }
 
-    public Pet(String uniqueID, String realName, String price, String petimageurl, String personalName, String dob,
+    public Pet(int uniqueID, String realName, String price, String petimageurl, String personalName, String dob,
 			String specialTalent, String behavior, String mobileNumber, String vaccinationCertificate,String soldUserEmail) {
-    	Pet.uniqueID = uniqueID;
-    	Pet.petimageurl=petimageurl;
-    	Pet.realName = realName;
-    	Pet.personalName = personalName;
-    	Pet.dob = dob;
-        Pet.specialTalent = specialTalent;
-        Pet.behavior = behavior;
-        Pet.price = price;
-        Pet.mobileNumber = mobileNumber;
-        Pet.vaccinationCertificate = vaccinationCertificate;
-        Pet.soldUserEmail = soldUserEmail;
+    	this.uniqueID = uniqueID;
+    	this.petimageurl=petimageurl;
+    	this.realName = realName;
+    	this.personalName = personalName;
+    	this.dob = dob;
+    	this.specialTalent = specialTalent;
+    	this.behavior = behavior;
+    	this.price = price;
+    	this.mobileNumber = mobileNumber;
+    	this.vaccinationCertificate = vaccinationCertificate;
+    	this.soldUserEmail = soldUserEmail;
+	}
+    public Pet(int uniqueID, String realName, String price, String petimageurl, String personalName, String dob,
+			String specialTalent, String behavior, String mobileNumber, String vaccinationCertificate) {
+    	this.uniqueID = uniqueID;
+    	this.petimageurl=petimageurl;
+    	this.realName = realName;
+    	this.personalName = personalName;
+    	this.dob = dob;
+    	this.specialTalent = specialTalent;
+    	this.behavior = behavior;
+    	this.price = price;
+    	this.mobileNumber = mobileNumber;
+    	this.vaccinationCertificate = vaccinationCertificate;
+    	this.soldUserEmail = soldUserEmail;
 	}
     public Pet( String realName, String price, String petimageurl, String personalName, String dob,
 			String specialTalent, String behavior, String mobileNumber, String vaccinationCertificate,String soldUserEmail) {
-    	
-    	Pet.petimageurl=petimageurl;
-    	Pet.realName = realName;
-    	Pet.personalName = personalName;
-    	Pet.dob = dob;
-    	Pet.specialTalent = specialTalent;
-    	Pet.behavior = behavior;
-    	Pet.price = price;
-    	Pet.mobileNumber = mobileNumber;
-    	Pet.vaccinationCertificate = vaccinationCertificate;
-    	Pet.soldUserEmail=soldUserEmail;
+
+    	this.petimageurl=petimageurl;
+    	this.realName = realName;
+    	this.personalName = personalName;
+    	this.dob = dob;
+    	this.specialTalent = specialTalent;
+    	this.behavior = behavior;
+    	this.price = price;
+    	this.mobileNumber = mobileNumber;
+    	this.vaccinationCertificate = vaccinationCertificate;
+    	this.soldUserEmail=soldUserEmail;
 	}
-    
-    public static String getsoldUserEmail() {
+
+    public Pet() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getsoldUserEmail() {
     	return soldUserEmail;
     }
     public void  setsoldUserEmail(String soldUserEmail) {
-    	Pet.soldUserEmail = soldUserEmail;
+    	this.soldUserEmail = soldUserEmail;
     }
-    public static String getuniqueID() {
+    public int getuniqueID() {
     	return uniqueID;
     }
-    public void  setuniqueID(String uniqueID) {
-    	Pet.uniqueID = uniqueID;
+    public void  setuniqueID(int uniqueID) {
+    	this.uniqueID = uniqueID;
     }
-	public static String getpetimageurl() {
+	public String getpetimageurl() {
     	return petimageurl;
     }
     public void setpetimageurl(String petimageurl) {
-    	Pet.petimageurl=petimageurl;
+    	this.petimageurl=petimageurl;
     }
     // Getter and Setter for Real Name
-    public static String getRealName() {
+    public String getRealName() {
         return realName;
     }
 
     public void setRealName(String realName) {
-    	Pet.realName = realName;
+    	this.realName = realName;
     }
 
     // Getter and Setter for Personal Name (Nick name)
-    public static String getPersonalName() {
+    public String getPersonalName() {
         return personalName;
     }
 
     public void setPersonalName(String personalName) {
-    	Pet.personalName = personalName;
+    	this.personalName = personalName;
     }
 
     // Getter and Setter for DOB
-    public static String getDob() {
+    public String getDob() {
         return dob;
     }
 
     public void setDob(String dob) {
-    	Pet.dob = dob;
+    	this.dob = dob;
     }
 
     // Getter and Setter for Special Talent
-    public static String getSpecialTalent() {
+    public String getSpecialTalent() {
         return specialTalent;
     }
 
     public void setSpecialTalent(String specialTalent) {
-    	Pet.specialTalent = specialTalent;
+    	this.specialTalent = specialTalent;
     }
 
     // Getter and Setter for Behavior
-    public static String getBehavior() {
+    public String getBehavior() {
         return behavior;
     }
 
     public void setBehavior(String behavior) {
-    	Pet.behavior = behavior;
+    	this.behavior = behavior;
     }
 
     // Getter and Setter for Pet Price
-    public static String getPrice() {
+    public String getPrice() {
         return price;
     }
 
     public void setPrice(String price) {
-    	Pet.price = price;
+    	this.price = price;
     }
 
     // Getter and Setter for Mobile Number
-    public static String getMobileNumber() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
     public void setMobileNumber(String mobileNumber) {
-    	Pet.mobileNumber = mobileNumber;
+    	this.mobileNumber = mobileNumber;
     }
 
     // Getter and Setter for Vaccination Certificate
-    public static String getVaccinationCertificate() {
+    public String getVaccinationCertificate() {
         return vaccinationCertificate;
     }
 
     public void setVaccinationCertificate(String vaccinationCertificate) {
-    	Pet.vaccinationCertificate = vaccinationCertificate;
+    	this.vaccinationCertificate = vaccinationCertificate;
     }
-	
+
+
+	@Override
+	public String toString() {
+		return "Pet [uniqueID=" + uniqueID + ", petimageurl=" + petimageurl + ", realName=" + realName
+				+ ", personalName=" + personalName + ", dob=" + dob + ", specialTalent=" + specialTalent + ", behavior="
+				+ behavior + ", price=" + price + ", mobileNumber=" + mobileNumber + ", vaccinationCertificate="
+				+ vaccinationCertificate + ", soldUserEmail=" + soldUserEmail + "]";
+	}
+
+
+
+
+
 
 }

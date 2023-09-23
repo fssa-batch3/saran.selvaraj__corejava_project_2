@@ -1,7 +1,6 @@
 package com.fssa.petmall.services;
 
 import static org.junit.Assert.fail;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,20 +14,20 @@ import com.fssa.petmall.model.User;
 import com.fssa.petmall.services.exception.ServiceException;
 
 class TestUpdateUser {
-	
+
 	@Test
 	void testUpdateSuccess() throws ServiceException {
 		User user1 = new User("saran2112@gmail.com","9566848434","2004-12-21", null, null);
 		String email = "saran@gmail.com";
-		
+
 		assertTrue(UserService.updateUser(user1 , email));
 	}
-	
+
 	@Test
 	void testUpdateFail() throws ServiceException {
 		User user1 = new User("Female","9566848434","2004-12-21", null, null);
 		String email = "saran@gmal.com";
-		
+
 		assertFalse(UserService.updateUser(user1 , email));
 	}
 
@@ -50,7 +49,7 @@ class TestUpdateUser {
     	User user1 = new User("Female","9566848434","2004-12-21", null, null);
     	String email = "saran@gmal.com";
         try {
-            
+
             UserService.loginUser(user1);
 
             boolean result = UserService.updateUser(user1, email); // Use a valid userID
@@ -66,7 +65,7 @@ class TestUpdateUser {
     	User user1 = new User("Female","9566848434","2004-12-21", null, null);
     	String email = "saran@gmal.com";
         try {
-           
+
             UserService.loginUser(user1);
 
             boolean result = UserService.updateUser(user1, email); // Use a valid userID
@@ -84,7 +83,7 @@ class TestUpdateUser {
         try {
             UserDAOSimulated userDAOSimulated = new UserDAOSimulated(false);
 
-            
+
             UserService.loginUser(user1);
 
             assertThrows(ServiceException.class, () -> UserService.updateUser(user1, email), "ServiceException should be thrown");

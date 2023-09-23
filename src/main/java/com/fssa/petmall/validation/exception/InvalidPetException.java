@@ -7,6 +7,6 @@ public class InvalidPetException {
 	}
 	public InvalidPetException(Throwable e) {
 		super();
-		
+
 	}
 }

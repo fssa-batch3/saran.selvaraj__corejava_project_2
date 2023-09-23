@@ -2,20 +2,20 @@ package com.fssa.petmall.validation;
 
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 import com.fssa.petmall.model.User;
+import com.fssa.petmall.utills.Logger;
 import com.fssa.petmall.validation.exception.InvalidUserException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import com.fssa.petmall.utills.*;
 public class UserValidator {
-	
+
 	// if three conditions valid then user valid
 	public static boolean validateUser(User user) throws InvalidUserException {
-		if(user != null && validateName(user.getfirst_name())&& validateName(user.getlast_name()) && validateEmail(user.getEmail()) 
+		if(user != null && validateName(user.getfirst_name())&& validateName(user.getlast_name()) && validateEmail(user.getEmail())
 				&& validatePassword(user.getPassword())) {
 			return true;
 		} else {
@@ -72,32 +72,32 @@ public class UserValidator {
 			Logger.error(e);
 		}
 		return isMatch;
-		
+
 
     }
 	public static boolean validateDateOfBirth(String dateOfBirth) {
         if (dateOfBirth == null || dateOfBirth.isEmpty()) {
             return false;
         }
-        
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false); // Disable lenient parsing
-        
+
         try {
             Date dob = dateFormat.parse(dateOfBirth);
-            
+
             // Check if date of birth is in the past
             Date currentDate = new Date();
             if (dob.after(currentDate)) {
                 return false;
             }
-            
+
             return true;
         } catch (ParseException e) {
             return false; // Invalid date format
         }
     }
-	
+
 	public static boolean validateGender(String gender) {
         if (gender == null || gender.isEmpty()) {
             return false;
@@ -105,7 +105,7 @@ public class UserValidator {
         gender = gender.toLowerCase();
         return gender.equals("male") || gender.equals("female");
     }
-	
+
 
     public static boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber == null || phoneNumber.isEmpty()) {
@@ -114,7 +114,7 @@ public class UserValidator {
 
         // Regular expression pattern for a valid phone number (change as needed)
         String regex = "^[0-9]{10}$"; // Assuming a 10-digit phone number
-        
+
         return Pattern.matches(regex, phoneNumber);
     }
 }
