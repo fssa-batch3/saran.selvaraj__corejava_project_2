@@ -8,15 +8,21 @@ public class Utills {
 
 	// Call the database connection
 	public static Connection getConnection() {
-
-		// Database URL and credentials
+		
+		
 		final String DB_URL;
 		final String DB_USER;
 		final String DB_PASSWORD;
 
-//        DB_URL = System.getenv("DB_URL");
-//        DB_USER = System.getenv("DB_USER");
-//        DB_PASSWORD = System.getenv("DB_PASSWORD");
+//      DB_URL = System.getenv("DB_URL");
+//      DB_USER = System.getenv("DB_USER");
+//      DB_PASSWORD = System.getenv("DB_PASSWORD");
+		
+		
+//      DB_URL = System.getenv("L_DB_URL");
+//      DB_USER = System.getenv("L_DB_USER");
+//      DB_PASSWORD = System.getenv("L_DB_PASSWORD");
+		
 		
 		DB_URL = "jdbc:mysql://localhost:3306/pet_mall";
 		DB_USER = "root";
@@ -33,4 +39,6 @@ public class Utills {
 			throw new RuntimeException("Database Driver class Not found", e);
 		}
 	}
+	
+	
 }

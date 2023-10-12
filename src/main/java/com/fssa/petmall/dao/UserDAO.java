@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.fssa.petmall.constants.PetModuleConstants;
+import com.fssa.petmall.dao.exception.DAOException;
+import com.fssa.petmall.model.Pet;
 import com.fssa.petmall.model.User;
 import com.fssa.petmall.utills.Logger;
 import com.fssa.petmall.utills.Utills;
@@ -187,6 +192,148 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return user1;
+	}
+	
+	public boolean createAddress(String email, String address) throws SQLException {
+		//Get Connection
+		Connection connection = Utills.getConnection();
+		// Prepare SQL Statement
+		String insertQuery = "INSERT INTO useraddress_details (address,userEmail,isDefault) VALUES (?,?,1);";
+		PreparedStatement pst = connection.prepareStatement(insertQuery);
+//		pst.setInt(1, user.getUserID());
+		pst.setString(1, address);
+		pst.setString(2, email);
+		//Execute query
+		int rows = pst.executeUpdate();
+		    pst.close();
+		   connection.close();
+		//Return Successful or not
+		return (rows == 1);
+	}
+	
+	public boolean updateAddress(String address, int id) throws SQLException {
+		//Get Connection
+		Connection connection = Utills.getConnection();
+		// Prepare SQL Statement
+		String insertQuery = "Update useraddress_details SET address = ? where id = ?;";
+		PreparedStatement pst = connection.prepareStatement(insertQuery);
+        //pst.setInt(1, user.getUserID());
+		pst.setString(1, address);
+		pst.setInt(2, id);
+		//Execute query
+		int rows = pst.executeUpdate();
+		    pst.close();
+		   connection.close();
+		//Return Successful or not
+		return (rows == 1);
+	}
+	
+	public boolean deleteAddress(int id) throws SQLException {
+		//Get Connection
+		Connection connection = Utills.getConnection();
+		// Prepare SQL Statement
+		String insertQuery = "Update useraddress_details SET isDeleted = 1 where id = ?;";
+		PreparedStatement pst = connection.prepareStatement(insertQuery);
+        //pst.setInt(1, user.getUserID());
+		pst.setInt(1,id);
+		//Execute query
+		int rows = pst.executeUpdate();
+		    pst.close();
+		   connection.close();
+		//Return Successful or not
+		return (rows == 1);
+	}
+	
+	public static List<User> listOfAddress(String email) throws DAOException {
+		List<User> list = new ArrayList<>();
+        
+		try (Connection connection = Utills.getConnection();
+				PreparedStatement pst = connection
+						.prepareStatement("SELECT * FROM useraddress_details WHERE userEmail = ?;")) {
+			pst.setString(1, email);
+			try (ResultSet resultSet = pst.executeQuery()) {
+
+				while (resultSet.next()) {
+
+					User user = new User();
+
+					user.setId(resultSet.getInt("id"));
+					user.setEmail(resultSet.getString("userEmail"));
+					user.setAddress(resultSet.getString("address"));
+					user.setisDeleted(resultSet.getInt("isDeleted"));
+					user.setisDefault(resultSet.getInt("isDefault"));
+					list.add(user);
+
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException(PetModuleConstants.READ_ERROR_MESSAGE + e);
+		}
+
+		return list;
+	}
+	
+	
+	public static List<User> getDefaultAddress(String email) throws DAOException {
+		List<User> list = new ArrayList<>();
+        
+		try (Connection connection = Utills.getConnection();
+				PreparedStatement pst = connection
+						.prepareStatement("SELECT * FROM useraddress_details WHERE userEmail = ? AND isDefault = 1;")) {
+			pst.setString(1, email);
+			try (ResultSet resultSet = pst.executeQuery()) {
+
+				while (resultSet.next()) {
+
+					User user = new User();
+
+					user.setId(resultSet.getInt("id"));
+					user.setEmail(resultSet.getString("userEmail"));
+					user.setAddress(resultSet.getString("address"));
+					user.setisDeleted(resultSet.getInt("isDeleted"));
+					user.setisDefault(resultSet.getInt("isDefault"));
+					list.add(user);
+
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException(PetModuleConstants.READ_ERROR_MESSAGE + e);
+		}
+
+		return list;
+	}
+	
+	
+	
+	public boolean setDefaultAddress(int id) throws SQLException {
+		//Get Connection
+		Connection connection = Utills.getConnection();
+		// Prepare SQL Statement
+		String insertQuery = "Update useraddress_details SET isDefault = 1 where id = ?;";
+		PreparedStatement pst = connection.prepareStatement(insertQuery);
+        pst.setInt(1, id);
+		//Execute query
+		int rows = pst.executeUpdate();
+		    pst.close();
+		   connection.close();
+		//Return Successful or not
+		return (rows == 1);
+	}
+	
+	
+	public boolean removeDefaultAddress(String email) throws SQLException {
+		//Get Connection
+		Connection connection = Utills.getConnection();
+		// Prepare SQL Statement
+		String insertQuery = "Update useraddress_details SET isDefault = 0 where userEmail = ?;";
+		PreparedStatement pst = connection.prepareStatement(insertQuery);
+		pst.setString(1, email);
+		//Execute query
+		int rows = pst.executeUpdate();
+		    pst.close();
+		   connection.close();
+		//Return Successful or not
+		return (rows == 1);
 	}
 
 }

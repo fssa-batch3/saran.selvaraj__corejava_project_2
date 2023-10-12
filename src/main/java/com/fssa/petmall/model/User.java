@@ -3,16 +3,19 @@ package com.fssa.petmall.model;
 public class User {
 
 	private int userID;
-
-
+	private int id;
+	private String address;
+	private int isDeleted;
+	private int isDefault;
+	public String email;
 	private String firstname;
 	public String lastname;
 	private String gender;
 	private String Phonenumber;
 	private String dateofbirth;
-	public String email;
 	public String password;
 	public int isdeleted;
+	
 
 
 	//register
@@ -55,6 +58,10 @@ public class User {
 			super();
 			this.userID = userID;
 		}
+		public User(String address) {
+			super();
+			this.address = address;
+		}
 
 	//login
 	public User(String email, String password) {
@@ -62,12 +69,45 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
+	
+	public User(int id,String address, String email) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.email = email;
+	}
 
+	public User() {
+	}
 	@Override
 	public String toString() {
 		return "UserID: " + userID + "First_name: " + firstname +"last_name"+lastname+ "gender: " + gender + "Phone_number: " + Phonenumber + "date_of_birth: " + dateofbirth + "Email: " + email + " Password: " + password;
 	}
 
+	public int getisDefault() {
+		return isDefault;
+	}
+	public void setisDefault(int isDefault) {
+		this.isDefault = isDefault;
+	}
+	public int getisDeleted() {
+		return isDeleted;
+	}
+	public void setisDeleted(int isDeleted) {
+		this.isDeleted = isdeleted;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public int getIsDeleted() {
 		return isdeleted;
 	}
@@ -137,5 +177,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
 }

@@ -51,6 +51,21 @@ public class PetService {
 		}
 	}
 	
+	public boolean cancelOrder(int uniqueID) throws ServiceException {
+		PetDAO petDAO = new PetDAO();
+		try {
+			if(petDAO.cancelOrder( uniqueID)) {
+				Logger.debug("Pet successfully Cancelled!");
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
+	
 	public List<Pet> orderedPets(String email) throws ServiceException {
 		List<Pet> list = null;
 		try {
@@ -60,6 +75,18 @@ public class PetService {
 		}
 		return list;
 	}
+	
+	
+	public List<Pet> soldPets(String email) throws ServiceException {
+		List<Pet> list = null;
+		try {
+			list = PetDAO.soldPets(email);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+		return list;
+	}
+	
 
 	public List<Pet> viewPet(int id) throws ServiceException {
 		List<Pet> list = null;

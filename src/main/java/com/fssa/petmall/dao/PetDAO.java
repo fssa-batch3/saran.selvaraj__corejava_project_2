@@ -151,6 +151,7 @@ public class PetDAO {
 		return list;
 	}
 	
+	
 	public boolean placeOrder(int uniqueID, String loggedInUserEmail) throws SQLException {
 		Connection connection = Utills.getConnection();
 
@@ -163,12 +164,27 @@ public class PetDAO {
 		connection.close();
 		return (rows == 1);
 	}
+	
+	public boolean cancelOrder(int uniqueID) throws SQLException {
+		Connection connection = Utills.getConnection();
+
+		String selectQuery = "UPDATE pet_details SET BoughtUserEmail = null,isNotBought = 1 WHERE uniqueId = " + uniqueID + ";";
+		PreparedStatement pst = connection.prepareStatement(selectQuery);
+		
+
+		int rows = pst.executeUpdate();
+		pst.close();
+		connection.close();
+		return (rows == 1);
+	}
+	
+	
+	
 	public static List<Pet> orderedPets(String email) throws DAOException {
 		List<Pet> list = new ArrayList<>();
         
 		try (Connection connection = Utills.getConnection();
-				PreparedStatement pst = connection
-						.prepareStatement("SELECT * FROM pet_details WHERE BoughtUserEmail = ?;")) {
+				PreparedStatement pst = connection.prepareStatement("SELECT * FROM pet_details WHERE BoughtUserEmail = ? and isNotBought = 0;")) {
 			pst.setString(1, email);
 			try (ResultSet resultSet = pst.executeQuery()) {
 
@@ -200,4 +216,39 @@ public class PetDAO {
 	}
 	
 
+	public static List<Pet> soldPets(String email) throws DAOException {
+		List<Pet> list = new ArrayList<>();
+        
+		try (Connection connection = Utills.getConnection();
+				PreparedStatement pst = connection.prepareStatement("SELECT * FROM pet_details WHERE soldUserEmail = ? and isNotBought = 0;")) {
+			    pst.setString(1, email);
+			try (ResultSet resultSet = pst.executeQuery()) {
+
+				while (resultSet.next()) {
+
+					Pet pet = new Pet();
+
+					pet.setuniqueID(resultSet.getInt("uniqueId"));
+					pet.setRealName(resultSet.getString("realName"));
+					pet.setPrice(resultSet.getString("Price"));
+					pet.setpetimageurl(resultSet.getString("image"));
+					pet.setPersonalName(resultSet.getString("personalName"));
+					pet.setDob(resultSet.getString("dob"));
+					pet.setSpecialTalent(resultSet.getString("specialTalent"));
+					pet.setBehavior(resultSet.getString("behavior"));
+					pet.setMobileNumber(resultSet.getString("mobileNumber"));
+					pet.setVaccinationCertificate(resultSet.getString("vaccinationCertificate"));
+					pet.setsoldUserEmail(resultSet.getString("soldUserEmail"));
+
+					list.add(pet);
+
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException(PetModuleConstants.READ_ERROR_MESSAGE + e);
+		}
+
+		return list;
+	}
+	
 }
